@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const webpack = require("webpack");
-const TsConfigPathsPlugin = require("awesome-typescript-loader").TsConfigPathsPlugin;
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 /* Plugins */
@@ -15,19 +15,26 @@ const uglifyPlugin = new UglifyJsPlugin({
   },
 });
 const additionalPlugins = process.env.NODE_ENV === "production" ? [uglifyPlugin] : [];
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 /* Babel */
 const reactPresets = process.env.NODE_ENV === "production" ? ["@babel/react", "react-optimize"] : ["@babel/react"];
 const envPreset = ["@babel/env", { "targets": "last 2 versions, ie 11", "modules": false }];
-const babelOptions = { "presets": [envPreset, reactPresets] };
+const babelOptions = {
+  "presets": [envPreset, reactPresets],
+  "plugins": [[require("./vendor/babel-plugin-relay"), { "artifactDirectory": "./src/client/__generated__" }]],
+};
+
+const extensions = [".ts", ".tsx", ".js"];
 
 /* Config */
 const config = {
-  entry: ["@babel/polyfill", "./src/app.tsx"],
+  entry: ["@babel/polyfill", "./src/client/app.tsx"],
   devtool: "sourcemap",
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions,
+    plugins: [new TsconfigPathsPlugin({ extensions })]
   },
   module: {
     rules: [
@@ -44,19 +51,31 @@ const config = {
           }
         ]
       },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader?modules&importLoaders=1",
+          "postcss-loader"
+        ],
+      },
     ],
   },
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     publicPath: "",
     filename: "app.js",
   },
   plugins: [
+    new CopyWebpackPlugin([
+      { from: "src/client/index.html" },
+    ]),
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify("production"),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    ...additionalPlugins,
   ],
 };
 

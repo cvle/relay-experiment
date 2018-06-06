@@ -1,0 +1,8 @@
+{
+  "exec": "npm-run-all compile:relay",
+  "ext": "ts,tsx,graphql",
+  "watch": [
+    "client/",
+    "src/schema.graphql"
+  ]
+}

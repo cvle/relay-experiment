@@ -1,0 +1,37 @@
+import { ApolloServer, gql } from "apollo-server";
+import { registerServer } from "apollo-server-express";
+import * as express from "express";
+import * as fs from "fs";
+import * as path from "path";
+
+const APP_PORT = 8080;
+const APP_HOST = "0.0.0.0";
+
+const app = express();
+
+// Serve static resources
+app.use("/", express.static(path.resolve(__dirname, "../../dist")));
+
+const schema = fs.readFileSync(
+  path.join(__dirname, "../schema.graphql"),
+  "utf8"
+);
+
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  ${schema}
+`;
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    comment: () => ({ id: 10, body: "hey" })
+  }
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+registerServer({ server, app, path: "/graphql" });
+
+app.listen(APP_PORT, APP_HOST, () => {
+  console.log(`🚀 Server ready at ${APP_HOST}:${APP_PORT}`);
+});

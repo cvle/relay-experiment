@@ -1,10 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
+    "target": "es2015",
+    "module": "es2015",
     "jsx": "preserve",
     "moduleResolution": "node",
-    "lib": ["dom", "es5", "scripthost", "es2015"]
+    "lib": ["dom", "es5", "scripthost", "es2015"],
+    "baseUrl": "./",
+    "plugins": [
+      {
+        "name": "ts-graphql-plugin",
+        "schema": "./src/schema.graphql",
+        "tag": "gql"
+      }
+    ],
+    "paths": {
+      "*": [
+        "./vendor/*"
+      ]
+    }
   },
   "include": [
     "./src/**/*.ts",
