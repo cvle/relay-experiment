@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "lib": ["dom", "es5", "scripthost", "es2015"]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.d.ts",
+    "./test/**/*.ts",
+    "./test/**/*.tsx"
+  ]
+}

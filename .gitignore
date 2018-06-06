@@ -1,0 +1,15 @@
+node_modules/
+dist
+build
+npm-debug.log*
+yarn-error.log
+
+.idea/
+*.swp
+*.DS_STORE
+.prettierrc.json
+.vscode
+
+UltiSnip
+
+**/node_modules/*
