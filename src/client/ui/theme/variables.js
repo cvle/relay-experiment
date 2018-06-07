@@ -1,0 +1,23 @@
+module.exports = {
+  primaryColor1: "#0D5B8F",
+  primaryColor2: "#2B7EB5",
+  primaryColor3: "#3498DB",
+  primaryColor4: "#67B2E4",
+  primaryColor5: "#8DC5EB",
+  secondaryColor1: "#404345",
+  secondaryColor2: "#65696B",
+  secondaryColor3: "#787D80",
+  secondaryColor4: "#9A9DA0",
+  secondaryColor5: "#BBBEBF",
+  successColor1: "#03AB61",
+  successColor2: "#02BD6B",
+  successColor3: "#00CD73",
+  successColor4: "#40D996",
+  successColor5: "#83EBBD",
+  warningColor1: "#F50F0C",
+  warningColor2: "#FF1F1C",
+  warningColor3: "#FA4643",
+  warningColor4: "#FB7472",
+  warningColor5: "#fc9795",
+  spacingUnit: 5
+};

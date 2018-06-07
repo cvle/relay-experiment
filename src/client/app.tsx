@@ -4,6 +4,7 @@ import * as ReactDOM from "react-dom";
 import { StatelessComponent } from "react";
 import { graphql, QueryRenderer } from "react-relay";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import Button from "./ui/components/Button";
 
 function fetchQuery(operation, variables) {
   return fetch("/graphql", {
@@ -38,7 +39,12 @@ const App: StatelessComponent = () => (
     variables={{}}
     render={({ error, props }) => {
       if (props) {
-        return <div>{props.comment.body}</div>;
+        return (
+          <div>
+            <div>{props.comment.body}</div>
+            <Button primary>Post</Button>
+          </div>
+        );
       } else {
         return <div>Loading</div>;
       }
