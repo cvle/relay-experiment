@@ -4,7 +4,7 @@ import * as ReactDOM from "react-dom";
 import { graphql, QueryRenderer } from "react-relay";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
-import Button from "talk-client/ui/components/Button";
+import Button from "talk-ui/components/Button";
 
 import Comment from "./containers/Comment";
 

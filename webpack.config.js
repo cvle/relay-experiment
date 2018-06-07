@@ -22,14 +22,14 @@ const reactPresets = process.env.NODE_ENV === "production" ? ["@babel/react", "r
 const envPreset = ["@babel/env", { "targets": "last 2 versions, ie 11", "modules": false }];
 const babelOptions = {
   "presets": [envPreset, reactPresets],
-  "plugins": [[require("./vendor/babel-plugin-relay"), { "artifactDirectory": "./src/client/__generated__" }]],
+  "plugins": [[require("./vendor/babel-plugin-relay"), { "artifactDirectory": "./src/client/stream/__generated__" }]],
 };
 
 const extensions = [".ts", ".tsx", ".js"];
 
 /* Config */
 const config = {
-  entry: ["@babel/polyfill", "./src/client/app.tsx"],
+  entry: ["@babel/polyfill", "./src/client/stream/app.tsx"],
   devtool: "sourcemap",
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   resolve: {
@@ -68,7 +68,7 @@ const config = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: "src/client/index.html" },
+      { from: "src/client/stream/index.html" },
     ]),
     new webpack.DefinePlugin({
       "process.env": {

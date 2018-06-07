@@ -1,8 +1,8 @@
 import { graphql } from "react-relay";
 import { compose, flattenProp } from "recompose";
 
-import { Comment as CommentData } from "talk-client/__generated__/Comment.graphql";
-import createFragmentContainer from "talk-client/helpers/createFragmentContainer";
+import createFragmentContainer from "talk-framework/helpers/createFragmentContainer";
+import { Comment as CommentData } from "talk-stream/__generated__/Comment.graphql";
 
 import Comment, { CommentProps as CommentPropsIn } from "../components/Comment";
 

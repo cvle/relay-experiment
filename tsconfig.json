@@ -14,8 +14,17 @@
       }
     ],
     "paths": {
-      "talk-client/*": [
-        "./src/client/*"
+      "talk-admin/*": [
+        "./src/client/admin/*"
+      ],
+      "talk-stream/*": [
+        "./src/client/stream/*"
+      ],
+      "talk-framework/*": [
+        "./src/client/framework/*"
+      ],
+      "talk-ui/*": [
+        "./src/client/ui/*"
       ],
       "talk-server/*": [
         "./src/server/*"

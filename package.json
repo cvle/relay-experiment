@@ -53,13 +53,13 @@
   ],
   "scripts": {
     "clean": "rm -rf dist",
-    "compile:relay": "NODE_PATH=./vendor ./vendor/relay-compiler/bin/relay-compiler --src ./src/client --schema src/schema.graphql --language typescript --artifactDirectory ./src/client/__generated__ --no-watchman",
     "start": "NODE_ENV=production ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
     "start:development": "NODE_ENV=development ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
-    "watch": "npm-run-all clean --parallel watch:*",
+    "watch": "npm-run-all clean compile:relay:* --parallel watch:*",
     "watch:css": "tcm src/client/ --watch",
     "watch:client": "NODE_ENV=development webpack --progress --watch",
-    "watch:relay": "nodemon --config .nodemon.relay.json",
-    "watch:server": "nodemon --config .nodemon.server.json"
+    "watch:relay:stream": "nodemon --config .nodemon.relay-stream.json",
+    "watch:server": "nodemon --config .nodemon.server.json",
+    "compile:relay:stream": "NODE_PATH=./vendor ./vendor/relay-compiler/bin/relay-compiler --src ./src/client/stream --schema src/schema.graphql --language typescript --artifactDirectory ./src/client/stream/__generated__ --no-watchman"
   }
 }
