@@ -14,6 +14,12 @@
       }
     ],
     "paths": {
+      "talk-client/*": [
+        "./src/client/*"
+      ],
+      "talk-server/*": [
+        "./src/server/*"
+      ],
       "*": [
         "./vendor/*"
       ]

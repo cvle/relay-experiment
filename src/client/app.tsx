@@ -1,10 +1,12 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-
 import { StatelessComponent } from "react";
+import * as ReactDOM from "react-dom";
 import { graphql, QueryRenderer } from "react-relay";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
-import Button from "./ui/components/Button";
+
+import Button from "talk-client/ui/components/Button";
+
+import Comment from "./containers/Comment";
 
 function fetchQuery(operation, variables) {
   return fetch("/graphql", {
@@ -32,7 +34,7 @@ const App: StatelessComponent = () => (
     query={graphql`
       query appQuery {
         comment {
-          body
+          ...Comment
         }
       }
     `}
@@ -41,7 +43,7 @@ const App: StatelessComponent = () => (
       if (props) {
         return (
           <div>
-            <div>{props.comment.body}</div>
+            <Comment data={props.comment} />
             <Button primary>Post</Button>
           </div>
         );
