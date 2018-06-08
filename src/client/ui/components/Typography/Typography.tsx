@@ -82,9 +82,9 @@ const Typography: StatelessComponent<TypographyProps> = props => {
   const {
     align,
     classes,
-    className: classNameProp,
+    className,
     color,
-    component: componentProp,
+    component,
     gutterBottom,
     headlineMapping,
     noWrap,
@@ -93,7 +93,7 @@ const Typography: StatelessComponent<TypographyProps> = props => {
     ...rest
   } = props;
 
-  const className = cn(
+  const rootClassName = cn(
     classes.root,
     classes[variant],
     {
@@ -103,15 +103,13 @@ const Typography: StatelessComponent<TypographyProps> = props => {
       [classes.paragraph]: paragraph,
       [classes[`align${capitalize(align)}`]]: align !== "inherit"
     },
-    classNameProp
+    className
   );
 
   const Component =
-    componentProp || (paragraph ? "p" : headlineMapping[variant]) || "span";
+    component || (paragraph ? "p" : headlineMapping[variant]) || "span";
 
-  return (
-    <Component className={cn(props.className, props.classes.root)} {...rest} />
-  );
+  return <Component className={rootClassName} {...rest} />;
 };
 
 Typography.defaultProps = {
