@@ -1,0 +1,71 @@
+.root {}
+
+.heading1 {}
+
+.heading2 {}
+
+.heading3 {}
+
+.heading4 {}
+
+.subtitle1 {}
+
+.subtitle2 {}
+
+.body2 {}
+
+.body1 {}
+
+.button {}
+
+.overline {}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignJustify {
+  text-align: justify;
+}
+
+.noWrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gutterBottom {
+  margin-bottom: 0.35em;
+}
+
+.paragraph {
+  margin-bottom: calc($spacing-unit * 2);
+}
+
+.colorInherit {
+  color: inherit;
+}
+
+.colorPrimary {
+  color: $palette-primary-main;
+}
+
+.colorSecondary {
+  color: $palette-secondary-main;
+}
+
+.colorTextSecondary {
+  color: $palette-text-secondary;
+}
+
+.colorError {
+  color: $palette-error-main;
+}

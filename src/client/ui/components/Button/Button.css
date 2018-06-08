@@ -1,11 +1,8 @@
 .root {
+  /* composes: typography from "../Typography/Typography.css"; */
   padding: 5px 20px;
-  border-radius: 2px;
+  border-radius: $round-corners;
   background-color: transparent;
-  font-family: "Source Sans Pro";
-  font-size: 16px;
-  color: black;
-  letter-spacing: 0;
 
   /* TODO: hover styles for the default button */
 }
@@ -17,59 +14,59 @@
 }
 
 .primary {
-  background-color: $primary-color-3;
+  background-color: $palette-primary-main;
   color: #fff;
 
   &:hover {
-    background-color: $primary-color-4;
+    background-color: $palette-primary-light;
   }
 
   &:active {
-    background-color: $primary-color-5;
+    background-color: $palette-primary-lighter;
   }
 
   &.invert {
     background-color: transparent;
-    border: 1px solid $primary-color-3;
-    color: $primary-color-3;
+    border: 1px solid $palette-primary-main;
+    color: $palette-primary-main;
 
     &:hover {
-      border-color: $primary-color-4;
-      color: $primary-color-4;
+      border-color: $palette-primary-light;
+      color: $palette-primary-light;
     }
 
     &:active {
-      border-color: $primary-color-5;
-      color: $primary-color-5;
+      border-color: $palette-primary-lighter;
+      color: $palette-primary-lighter;
     }
   }
 }
 
 .secondary {
-  background-color: $secondary-color-3;
+  background-color: $palette-secondary-main;
   color: #fff;
 
   &:hover {
-    background-color: $secondary-color-4;
+    background-color: $palette-secondary-light;
   }
 
   &:active {
-    background-color: $secondary-color-5;
+    background-color: $palette-secondary-lighter;
   }
 
   &.invert {
     background-color: transparent;
-    border: 1px solid $secondary-color-3;
-    color: $secondary-color-3;
+    border: 1px solid $palette-secondary-main;
+    color: $palette-secondary-main;
 
     &:hover {
-      border-color: $secondary-color-4;
-      color: $secondary-color-4;
+      border-color: $palette-secondary-light;
+      color: $palette-secondary-light;
     }
 
     &:active {
-      border-color: $secondary-color-5;
-      color: $secondary-color-5;
+      border-color: $palette-secondary-lighter;
+      color: $palette-secondary-lighter;
     }
   }
 }

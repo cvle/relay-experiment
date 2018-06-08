@@ -1,13 +1,15 @@
 import * as React from "react";
 import { StatelessComponent } from "react";
 
+import { Typography } from "talk-ui/components";
+
 export interface CommentProps {
-  className: string;
+  className?: string;
   body: string;
 }
 
 const Comment: StatelessComponent<CommentProps> = props => {
-  return <div>{props.body}</div>;
+  return <Typography>{props.body}</Typography>;
 };
 
 export default Comment;

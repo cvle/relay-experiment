@@ -4,7 +4,7 @@ import * as express from "express";
 import * as fs from "fs";
 import * as path from "path";
 
-const APP_PORT = 8080;
+const APP_PORT = 3000;
 const APP_HOST = "0.0.0.0";
 
 const app = express();
