@@ -2,7 +2,9 @@ import * as cn from "classnames";
 import * as React from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
 import { compose } from "recompose";
-import { withKeyboardFocus, withStyles } from "../hocs";
+
+import { withKeyboardFocus, withStyles } from "talk-ui/hocs";
+
 import * as styles from "./BaseButton.css";
 
 export interface BaseButtonProps

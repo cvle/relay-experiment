@@ -3,8 +3,10 @@ import { pick } from "lodash";
 import * as React from "react";
 import { StatelessComponent } from "react";
 import { compose } from "recompose";
-import { withStyles } from "../hocs";
-import BaseButton, { BaseButtonProps } from "./BaseButton";
+
+import { withStyles } from "talk-ui/hocs";
+
+import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
 
 interface ButtonProps extends BaseButtonProps {

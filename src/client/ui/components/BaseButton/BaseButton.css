@@ -1,5 +1,5 @@
 .root {
-  composes: buttonReset from "../shared/buttonReset.css";
+  composes: buttonReset from "talk-ui/shared/buttonReset.css";
 }
 
 .keyboardFocus {
