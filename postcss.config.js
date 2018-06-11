@@ -1,12 +1,22 @@
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
-const variables = require('./src/client/ui/theme/variables');
 const fontMagician = require('postcss-font-magician');
 const kebabCase = require('lodash/kebabCase');
 const mapKeys = require('lodash/mapKeys');
 const flat = require('flat');
 
+
+delete require.cache[require.resolve('./src/client/ui/theme/variables')];
+const variables = require('./src/client/ui/theme/variables');
 const flatKebabVariables = mapKeys(flat(variables, {delimiter: '-'}), (_, k) => kebabCase(k));
+
+/*
+const getVariables = () => {
+  delete require.cache[require.resolve('./src/client/ui/theme/variables')];
+  const variables = require('./src/client/ui/theme/variables');
+  const flatKebabVariables = mapKeys(flat(variables, {delimiter: '-'}), (_, k) => kebabCase(k));
+}
+*/
 
 module.exports = {
   plugins: [

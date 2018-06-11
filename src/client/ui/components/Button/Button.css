@@ -1,5 +1,5 @@
 .root {
-  /* composes: typography from "../Typography/Typography.css"; */
+  composes: button from "talk-ui/shared/typography.css";
   padding: 5px 20px;
   border-radius: $round-corners;
   background-color: transparent;

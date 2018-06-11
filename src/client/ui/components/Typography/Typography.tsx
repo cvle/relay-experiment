@@ -114,7 +114,7 @@ const Typography: StatelessComponent<TypographyProps> = props => {
 
 Typography.defaultProps = {
   align: "inherit",
-  color: "inherit",
+  color: "default",
   gutterBottom: false,
   headlineMapping: {
     heading1: "h1",

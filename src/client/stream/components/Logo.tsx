@@ -8,7 +8,7 @@ export interface LogoProps {
 }
 
 const Logo: StatelessComponent<LogoProps> = props => {
-  return <Typography variant="heading3">Talk NEO</Typography>;
+  return <Typography variant="heading1">Talk NEO</Typography>;
 };
 
 export default Logo;

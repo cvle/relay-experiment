@@ -1,24 +1,44 @@
 .root {}
 
-.heading1 {}
+.heading1 {
+  composes: heading1 from "talk-ui/shared/typography.css";
+}
 
-.heading2 {}
+.heading2 {
+  composes: heading2 from "talk-ui/shared/typography.css";
+}
 
-.heading3 {}
+.heading3  {
+  composes: heading3 from "talk-ui/shared/typography.css";
+}
 
-.heading4 {}
+.heading4  {
+  composes: heading4 from "talk-ui/shared/typography.css";
+}
 
-.subtitle1 {}
+.subtitle1  {
+  composes: subtitle1 from "talk-ui/shared/typography.css";
+}
 
-.subtitle2 {}
+.subtitle2  {
+  composes: subtitle2 from "talk-ui/shared/typography.css";
+}
 
-.body2 {}
+.body1 {
+  composes: body1 from "talk-ui/shared/typography.css";
+}
 
-.body1 {}
+.body2  {
+  composes: body2 from "talk-ui/shared/typography.css";
+}
 
-.button {}
+.button {
+  composes: button from "talk-ui/shared/typography.css";
+}
 
-.overline {}
+.overline {
+  composes: overline from "talk-ui/shared/typography.css";
+}
 
 .alignLeft {
   text-align: left;

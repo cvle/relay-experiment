@@ -14,7 +14,7 @@ const variables = {
       dark: "#65696B",
       main: "#787D80",
       light: "#9A9DA0",
-      lighter: "#BBBEBF",
+      lighter: "#636E72",
     },
     /* Success colors */
     success: {
@@ -29,13 +29,13 @@ const variables = {
       darker: "#F50F0C",
       dark: "#FF1F1C",
       main: "#FA4643",
-      light: "#FB7472",
-      lighter: "#fc9795",
+      light: "#F26563",
+      lighter: "#F26563",
     },
     /* Text colors */
     text: {
-      primary: "rgba(0, 0, 0, 0.87)",
-      secondary: "rgba(0, 0, 0, 0.54)",
+      primary: "#3B4A53",
+      secondary: "#787D80",
       disabled: "rgba(0, 0, 0, 0.38)",
       hint: "rgba(0, 0, 0, 0.38)",
     },
@@ -57,9 +57,9 @@ const variables = {
   /* Borders */
   roundCorners: "2px",
   /* Typography */
-  htmlFontSize: 16,
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-  fontSize: 14,
+  remBase: 16,
+  fontFamily: '"Source Sans Pro"',
+  fontSize: 16,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
