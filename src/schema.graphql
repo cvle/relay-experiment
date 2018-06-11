@@ -6,4 +6,5 @@ type Comment {
 
 type Query {
   comment: Comment
+  comments: [Comment]
 }

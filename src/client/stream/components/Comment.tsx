@@ -20,7 +20,7 @@ const Comment: StatelessComponent<CommentProps> = props => {
   });
   return (
     <div className={rootClassName}>
-      <Typography gutterBottom>{props.author}</Typography>
+      <Typography className={styles.author} gutterBottom>{props.author}</Typography>
       <Typography>{props.body}</Typography>
     </div>
   );

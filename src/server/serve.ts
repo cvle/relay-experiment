@@ -25,7 +25,11 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    comment: () => ({ id: 10, author: "Markus", body: "hey" })
+    comment: () => ({ id: 10, author: "Markus", body: "hey" }),
+    comments: () => [
+      { id: 10, author: "Markus", body: "Hey" },
+      { id: 11, author: "Lukas", body: "What's up?" }
+    ]
   }
 };
 

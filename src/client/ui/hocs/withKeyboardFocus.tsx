@@ -28,7 +28,7 @@ export default hoistStatics<WithKeyboardFocusInjectedProps>(
         lastMouseDownTime: 0
       };
 
-      public handleFocus = event => {
+      public handleFocus: React.EventHandler<FocusEvent<any>> = event => {
         if (this.props.onFocus) {
           this.props.onFocus(event);
         }
@@ -38,14 +38,14 @@ export default hoistStatics<WithKeyboardFocusInjectedProps>(
         }
       };
 
-      public handleBlur = event => {
+      public handleBlur: React.EventHandler<FocusEvent<any>> = event => {
         if (this.props.onBlur) {
           this.props.onBlur(event);
         }
         this.setState({ keyboardFocus: false });
       };
 
-      public handleMouseDown = event => {
+      public handleMouseDown: React.EventHandler<MouseEvent<any>> = event => {
         if (this.props.onMouseDown) {
           this.props.onMouseDown(event);
         }

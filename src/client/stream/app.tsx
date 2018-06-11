@@ -37,7 +37,8 @@ const App: StatelessComponent = () => (
     environment={modernEnvironment}
     query={graphql`
       query appQuery {
-        comment {
+        comments {
+          id
           ...Comment
         }
       }
@@ -48,7 +49,9 @@ const App: StatelessComponent = () => (
         return (
           <Center>
             <Logo gutterBottom />
-            <Comment data={props.comment} gutterBottom />
+            {props.comments.map(comment => (
+              <Comment key={comment.id} data={comment} gutterBottom />
+            ))}
             <Button primary>Post</Button>
           </Center>
         );
