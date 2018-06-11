@@ -1,9 +1,14 @@
 import * as cn from "classnames";
 import { capitalize } from "lodash";
 import * as React from "react";
-import { ReactNode, StatelessComponent } from "react";
-import { compose } from "recompose";
+import {
+  ComponentType,
+  HTMLAttributes,
+  ReactNode,
+  StatelessComponent
+} from "react";
 
+import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
 
 import * as styles from "./Typography.css";
@@ -11,7 +16,7 @@ import * as styles from "./Typography.css";
 // Based on Typography Component of Material UI.
 // https://github.com/mui-org/material-ui/blob/303199d39b42a321d28347d8440d69166f872f27/packages/material-ui/src/Typography/Typography.js
 
-export interface TypographyProps {
+interface TypographyInnerProps extends HTMLAttributes<any> {
   /**
    * Set the text-align on the component.
    */
@@ -23,7 +28,7 @@ export interface TypographyProps {
   /**
    * Override or extend the styles applied to the component.
    */
-  classes?: Partial<typeof styles>;
+  classes: Partial<typeof styles>;
   /**
    * Convenient prop to override the root styling.
    */
@@ -78,7 +83,12 @@ export interface TypographyProps {
     | "button";
 }
 
-const Typography: StatelessComponent<TypographyProps> = props => {
+export type TypographyProps = Overwrite<
+  TypographyInnerProps,
+  Partial<Pick<TypographyInnerProps, "classes">>
+>;
+
+const Typography: StatelessComponent<TypographyInnerProps> = props => {
   const {
     align,
     classes,
@@ -131,6 +141,4 @@ Typography.defaultProps = {
   variant: "body1"
 };
 
-const enhance = compose<TypographyProps, TypographyProps>(withStyles(styles));
-
-export default enhance(Typography);
+export default withStyles(styles)(Typography) as ComponentType<TypographyProps>;

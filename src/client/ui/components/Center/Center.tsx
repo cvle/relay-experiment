@@ -1,19 +1,24 @@
 import * as cn from "classnames";
 import * as React from "react";
-import { ReactNode, StatelessComponent } from "react";
-import { compose } from "recompose";
+import { ComponentType, ReactNode, StatelessComponent } from "react";
 
+import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
 
 import * as styles from "./Center.css";
 
-export interface CenterProps {
-  classes?: Partial<typeof styles>;
+interface CenterInnerProps {
+  classes: Partial<typeof styles>;
   className?: string;
   children: ReactNode;
 }
 
-const Center: StatelessComponent<CenterProps> = props => {
+export type CenterProps = Overwrite<
+  CenterInnerProps,
+  Partial<Pick<CenterInnerProps, "classes">>
+>;
+
+const Center: StatelessComponent<CenterInnerProps> = props => {
   return (
     <div className={cn(props.className, props.classes.root)}>
       {props.children}
@@ -21,6 +26,4 @@ const Center: StatelessComponent<CenterProps> = props => {
   );
 };
 
-const enhance = compose<CenterProps, CenterProps>(withStyles(styles));
-
-export default enhance(Center);
+export default withStyles(styles)(Center) as ComponentType<CenterProps>;

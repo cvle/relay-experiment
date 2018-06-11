@@ -3,28 +3,33 @@ import * as React from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
 import { compose } from "recompose";
 
+import { Overwrite } from "talk-framework/types";
 import { withKeyboardFocus, withStyles } from "talk-ui/hocs";
 
 import * as styles from "./BaseButton.css";
 
-export interface BaseButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface BaseButtonInnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 
   /** If set renders an anchor tag instead */
   anchor?: boolean;
 
   /** Extend existing styles by adding your custom classnames */
-  classes?: Partial<typeof styles>;
+  classes: Partial<typeof styles>;
 
-  keyboardFocus?: boolean;
+  keyboardFocus: boolean;
 }
+
+export type BaseButtonProps = Overwrite<
+  BaseButtonInnerProps,
+  Partial<Pick<BaseButtonInnerProps, "classes" | "keyboardFocus">>
+>;
 
 /**
  * A button whose styling is stripped off to a minimum and supports
  * keyboard focus. It is the base for the our other buttons.
  */
-const BaseButton: StatelessComponent<BaseButtonProps> = ({
+const BaseButton: StatelessComponent<BaseButtonInnerProps> = ({
   anchor,
   className,
   classes,
@@ -43,7 +48,7 @@ const BaseButton: StatelessComponent<BaseButtonProps> = ({
   return <Element {...rest} className={rootClassName} />;
 };
 
-const enhance = compose<BaseButtonProps, BaseButtonProps>(
+const enhance = compose<BaseButtonInnerProps, BaseButtonProps>(
   withStyles(styles),
   withKeyboardFocus
 );

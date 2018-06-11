@@ -17,6 +17,7 @@ const enhance = compose<CommentPropsIn, CommentProps>(
   createFragmentContainer(
     graphql`
       fragment Comment on Comment {
+        author
         body
       }
     `

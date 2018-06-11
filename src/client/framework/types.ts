@@ -1,6 +1,6 @@
-// Diff / Omit taken from https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-311923766
-export type Omit<T, K extends keyof T> = Pick<
-  T,
-  ({ [P in keyof T]: P } &
-    { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
->;
+export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
+  { [P in U]: never } & { [x: string]: never })[T];
+
+export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
+
+export type Overwrite<T, U> = Pick<T, Diff<keyof T, keyof U>> & U;

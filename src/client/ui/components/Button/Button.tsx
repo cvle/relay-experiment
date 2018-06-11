@@ -1,23 +1,28 @@
 import * as cn from "classnames";
 import { pick } from "lodash";
 import * as React from "react";
-import { StatelessComponent } from "react";
-import { compose } from "recompose";
+import { ComponentType, StatelessComponent } from "react";
 
+import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
 
 import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
 
-interface ButtonProps extends BaseButtonProps {
-  classes?: Partial<typeof styles> & BaseButtonProps["classes"];
+interface ButtonInnerProps extends BaseButtonProps {
+  classes: Partial<typeof styles> & BaseButtonProps["classes"];
   fullWidth?: boolean;
   invert?: boolean;
   primary?: boolean;
   secondary?: boolean;
 }
 
-class Button extends React.Component<ButtonProps> {
+export type ButtonProps = Overwrite<
+  ButtonInnerProps,
+  Partial<Pick<ButtonInnerProps, "classes">>
+>;
+
+class Button extends React.Component<ButtonInnerProps> {
   public render() {
     const {
       classes,
@@ -46,6 +51,4 @@ class Button extends React.Component<ButtonProps> {
   }
 }
 
-const enhance = compose<ButtonProps, ButtonProps>(withStyles(styles));
-
-export default enhance(Button);
+export default withStyles(styles)(Button) as ComponentType<ButtonProps>;

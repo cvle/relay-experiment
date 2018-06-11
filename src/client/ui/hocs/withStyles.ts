@@ -1,12 +1,17 @@
-import { withPropsOnChange } from "recompose";
+import {
+  DefaultingInferableComponentEnhancer,
+  withPropsOnChange
+} from "recompose";
 
 /**
  * withStyles provides a property `classes: object` that
  * includes the classNames from `styles` and extensions from the
  * property `classes`.
  */
-export default function withStyles(styles) {
-  const classes = { ...styles };
+function withStyles<T>(
+  styles: T
+): DefaultingInferableComponentEnhancer<{ classes: Partial<T> }> {
+  const classes = { ...(styles as any) };
   return withPropsOnChange<any, any>(["classes"], props => {
     if (props.classes) {
       Object.keys(props.classes).forEach(k => {
@@ -20,3 +25,5 @@ export default function withStyles(styles) {
     return { classes };
   });
 }
+
+export default withStyles;

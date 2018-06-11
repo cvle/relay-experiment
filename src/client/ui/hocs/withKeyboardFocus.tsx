@@ -6,13 +6,10 @@ import {
   InferableComponentEnhancerWithProps
 } from "recompose";
 
-interface WithKeyboardFocusNeedsProps {
+interface WithKeyboardFocusInjectedProps {
   onFocus: React.EventHandler<FocusEvent<any>>;
   onBlur: React.EventHandler<FocusEvent<any>>;
   onMouseDown: React.EventHandler<MouseEvent<any>>;
-}
-
-interface WithKeyboardFocusInjectedProps {
   keyboardFocus: boolean;
 }
 
@@ -22,10 +19,10 @@ interface WithKeyboardFocusInjectedProps {
  * or touch.
  */
 export default hoistStatics<WithKeyboardFocusInjectedProps>(
-  (WrappedComponent: React.ComponentType<any>) => {
-    class WithKeyboardFocus extends React.Component<
-      WithKeyboardFocusNeedsProps
-    > {
+  <T extends WithKeyboardFocusInjectedProps>(
+    WrappedComponent: React.ComponentType<T>
+  ) => {
+    class WithKeyboardFocus extends React.Component<any> {
       public state = {
         keyboardFocus: false,
         lastMouseDownTime: 0

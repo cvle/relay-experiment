@@ -1,4 +1,7 @@
-.root {}
+.root {
+  margin: 0;
+  padding: 0;
+}
 
 .heading1 {
   composes: heading1 from "talk-ui/shared/typography.css";
@@ -67,7 +70,7 @@
 }
 
 .paragraph {
-  margin-bottom: calc($spacing-unit * 2);
+  margin-bottom: calc(2px * $spacing-unit);
 }
 
 .colorInherit {

@@ -47,8 +47,8 @@ const App: StatelessComponent = () => (
       if (props) {
         return (
           <Center>
-            <Logo />
-            <Comment data={props.comment} />
+            <Logo gutterBottom />
+            <Comment data={props.comment} gutterBottom />
             <Button primary>Post</Button>
           </Center>
         );

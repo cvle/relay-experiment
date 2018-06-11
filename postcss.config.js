@@ -10,14 +10,6 @@ delete require.cache[require.resolve('./src/client/ui/theme/variables')];
 const variables = require('./src/client/ui/theme/variables');
 const flatKebabVariables = mapKeys(flat(variables, {delimiter: '-'}), (_, k) => kebabCase(k));
 
-/*
-const getVariables = () => {
-  delete require.cache[require.resolve('./src/client/ui/theme/variables')];
-  const variables = require('./src/client/ui/theme/variables');
-  const flatKebabVariables = mapKeys(flat(variables, {delimiter: '-'}), (_, k) => kebabCase(k));
-}
-*/
-
 module.exports = {
   plugins: [
     precss({ variables: flatKebabVariables }),
