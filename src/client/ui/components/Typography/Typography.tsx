@@ -8,8 +8,8 @@ import {
   StatelessComponent
 } from "react";
 
-import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
+import { Overwrite } from "talk-ui/types";
 
 import * as styles from "./Typography.css";
 

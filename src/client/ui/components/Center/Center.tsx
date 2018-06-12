@@ -2,8 +2,8 @@ import * as cn from "classnames";
 import * as React from "react";
 import { ComponentType, ReactNode, StatelessComponent } from "react";
 
-import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
+import { Overwrite } from "talk-ui/types";
 
 import * as styles from "./Center.css";
 

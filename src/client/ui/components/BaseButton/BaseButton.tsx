@@ -3,8 +3,8 @@ import * as React from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
 import { compose } from "recompose";
 
-import { Overwrite } from "talk-framework/types";
 import { withKeyboardFocus, withStyles } from "talk-ui/hocs";
+import { Overwrite } from "talk-ui/types";
 
 import * as styles from "./BaseButton.css";
 

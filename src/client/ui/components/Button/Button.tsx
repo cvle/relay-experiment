@@ -3,8 +3,8 @@ import { pick } from "lodash";
 import * as React from "react";
 import { ComponentType, StatelessComponent } from "react";
 
-import { Overwrite } from "talk-framework/types";
 import { withStyles } from "talk-ui/hocs";
+import { Overwrite } from "talk-ui/types";
 
 import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
