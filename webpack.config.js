@@ -29,7 +29,7 @@ const extensions = [".ts", ".tsx", ".js"];
 
 /* Config */
 const config = {
-  entry: ["@babel/polyfill", "./src/client/stream/app.tsx"],
+  entry: ["@babel/polyfill", "./src/client/stream/entry.tsx"],
   devtool: "sourcemap",
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
   resolve: {
