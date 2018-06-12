@@ -5,15 +5,15 @@ import withFragmentContainer from "talk-framework/lib/relay/withFragmentContaine
 import { Omit } from "talk-framework/types";
 import { AppContainer as AppContainerData } from "talk-stream/__generated__/AppContainer.graphql";
 
-import App, { AppProps as AppPropsIn } from "../components/App";
+import App, { AppProps as AppInnerProps } from "../components/App";
 
 interface QueryProps {
   data: AppContainerData;
 }
 
-export type AppProps = QueryProps & Omit<AppPropsIn, keyof AppContainerData>;
+export type AppProps = QueryProps & Omit<AppInnerProps, keyof AppContainerData>;
 
-const enhance = compose<AppPropsIn, AppProps>(
+const enhance = compose<AppInnerProps, AppProps>(
   withFragmentContainer(
     graphql`
       fragment AppContainer on Query {

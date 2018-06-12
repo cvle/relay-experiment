@@ -5,15 +5,18 @@ import withFragmentContainer from "talk-framework/lib/relay/withFragmentContaine
 import { Omit } from "talk-framework/types";
 import { Comment as CommentData } from "talk-stream/__generated__/Comment.graphql";
 
-import Comment, { CommentProps as CommentPropsIn } from "../components/Comment";
+import Comment, {
+  CommentProps as CommentInnerProps
+} from "../components/Comment";
 
 interface QueryProps {
   data: CommentData;
 }
 
-export type CommentProps = QueryProps & Omit<CommentPropsIn, keyof CommentData>;
+export type CommentProps = QueryProps &
+  Omit<CommentInnerProps, keyof CommentData>;
 
-const enhance = compose<CommentPropsIn, CommentProps>(
+const enhance = compose<CommentInnerProps, CommentProps>(
   withFragmentContainer(
     graphql`
       fragment Comment on Comment {
