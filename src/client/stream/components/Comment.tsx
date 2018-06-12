@@ -3,8 +3,8 @@ import * as React from "react";
 import { StatelessComponent } from "react";
 
 import { Typography } from "talk-ui/components";
-
 import { withStyles } from "talk-ui/hocs";
+
 import * as styles from "./Comment.css";
 
 export interface CommentProps {
@@ -20,7 +20,9 @@ const Comment: StatelessComponent<CommentProps> = props => {
   });
   return (
     <div className={rootClassName}>
-      <Typography className={styles.author} gutterBottom>{props.author}</Typography>
+      <Typography className={styles.author} gutterBottom>
+        {props.author}
+      </Typography>
       <Typography>{props.body}</Typography>
     </div>
   );
