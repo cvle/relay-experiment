@@ -4,4 +4,5 @@ The UI Kit provides the building blocks to create a Rich Graphical User Interfac
 
 ## What should be inside the UI Kit
 
-The UI Kit focuses on providing presentational building blocks that is not specific to any domain or product.
+- The UI Kit focuses on providing presentational building blocks that is not specific to any domain or product.
+- The UI Kit should be completely independent from the rest of the codebase.
