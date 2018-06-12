@@ -2,14 +2,14 @@ import * as cn from "classnames";
 import * as React from "react";
 import { StatelessComponent } from "react";
 
-import { AppContainer as AppProps } from "talk-stream/__generated__/AppContainer.graphql";
 import { Button, Center } from "talk-ui/components";
-export {
-  AppContainer as AppProps
-} from "talk-stream/__generated__/AppContainer.graphql";
 
 import CommentContainer from "../containers/CommentContainer";
 import Logo from "./Logo";
+
+export interface AppProps {
+  comments: [{ id: string }];
+}
 
 const postComment = () => {};
 
