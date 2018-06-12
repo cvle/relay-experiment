@@ -8,10 +8,9 @@ import CommentContainer from "../containers/CommentContainer";
 import Logo from "./Logo";
 
 export interface AppProps {
-  comments: [{ id: string }];
+  comments: ReadonlyArray<{ id: string }>;
+  onPostComment: () => void;
 }
-
-const postComment = () => {};
 
 const App: StatelessComponent<AppProps> = props => {
   return (
@@ -20,7 +19,7 @@ const App: StatelessComponent<AppProps> = props => {
       {props.comments.map(comment => (
         <CommentContainer key={comment.id} data={comment as any} gutterBottom />
       ))}
-      <Button onClick={postComment} primary>
+      <Button onClick={props.onPostComment} primary>
         Post
       </Button>
     </Center>

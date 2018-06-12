@@ -1,13 +1,35 @@
+import * as React from "react";
 import { graphql } from "react-relay";
-import { compose, flattenProp } from "recompose";
+import { compose } from "recompose";
 
 import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
 import { Omit } from "talk-framework/types";
 import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";
 
-import App, { AppProps as InnerProps } from "../components/App";
+import App, { AppProps } from "../components/App";
+import {
+  PostCommentMutation,
+  withPostCommentMutation
+} from "../mutations/PostCommentMutation";
 
-export type AppContainerProps = { data: Data } & Omit<InnerProps, keyof Data>;
+export interface AppContainerProps {
+  data: any;
+}
+
+interface InnerProps {
+  data: Data;
+  postComment: PostCommentMutation;
+}
+
+class AppContainer extends React.Component<InnerProps> {
+  private handlePostComment = () => {
+    this.props.postComment({ body: "What's up?" });
+  };
+
+  public render() {
+    return <App {...this.props.data} onPostComment={this.handlePostComment} />;
+  }
+}
 
 const enhance = compose<InnerProps, AppContainerProps>(
   withFragmentContainer(
@@ -20,7 +42,7 @@ const enhance = compose<InnerProps, AppContainerProps>(
       }
     `
   ),
-  flattenProp("data")
+  withPostCommentMutation
 );
 
-export default enhance(App);
+export default enhance(AppContainer);

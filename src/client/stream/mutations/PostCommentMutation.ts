@@ -1,6 +1,16 @@
 import { commitMutation, graphql } from "react-relay";
 import { ConnectionHandler } from "relay-runtime";
 
+import { createMutationContainer } from "talk-framework/lib/relay";
+import { Omit } from "talk-framework/types";
+import { PostCommentMutationVariables } from "talk-stream/__generated__/PostCommentMutation.graphql";
+
+export type PostCommentInput = Omit<
+  PostCommentMutationVariables["input"],
+  "clientMutationId"
+>;
+export type PostCommentMutation = (input: PostCommentInput) => void;
+
 const mutation = graphql`
   mutation PostCommentMutation($input: PostCommentInput!) {
     postComment(input: $input) {
@@ -16,12 +26,12 @@ const mutation = graphql`
 
 let clientMutationId = 0;
 
-function commit(environment, body) {
+function commit(environment, input: PostCommentInput) {
   return commitMutation(environment, {
     mutation,
     variables: {
       input: {
-        body,
+        ...input,
         clientMutationId: clientMutationId++
       }
     },
@@ -35,4 +45,7 @@ function commit(environment, body) {
   });
 }
 
-export default { commit };
+export const withPostCommentMutation = createMutationContainer(
+  "postComment",
+  commit
+);
