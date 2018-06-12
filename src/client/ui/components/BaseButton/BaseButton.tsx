@@ -8,7 +8,7 @@ import { Overwrite } from "talk-ui/types";
 
 import * as styles from "./BaseButton.css";
 
-interface BaseButtonInnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 
   /** If set renders an anchor tag instead */
@@ -21,15 +21,15 @@ interface BaseButtonInnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export type BaseButtonProps = Overwrite<
-  BaseButtonInnerProps,
-  Partial<Pick<BaseButtonInnerProps, "classes" | "keyboardFocus">>
+  InnerProps,
+  Partial<Pick<InnerProps, "classes" | "keyboardFocus">>
 >;
 
 /**
  * A button whose styling is stripped off to a minimum and supports
  * keyboard focus. It is the base for the our other buttons.
  */
-const BaseButton: StatelessComponent<BaseButtonInnerProps> = ({
+const BaseButton: StatelessComponent<InnerProps> = ({
   anchor,
   className,
   classes,
@@ -48,7 +48,7 @@ const BaseButton: StatelessComponent<BaseButtonInnerProps> = ({
   return <Element {...rest} className={rootClassName} />;
 };
 
-const enhance = compose<BaseButtonInnerProps, BaseButtonProps>(
+const enhance = compose<InnerProps, BaseButtonProps>(
   withStyles(styles),
   withKeyboardFocus
 );

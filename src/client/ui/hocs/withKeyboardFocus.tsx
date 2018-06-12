@@ -2,7 +2,7 @@ import * as React from "react";
 import { FocusEvent, HTMLAttributes, MouseEvent } from "react";
 import { ComponentEnhancer, hoistStatics } from "recompose";
 
-interface WithKeyboardFocusInjectedProps {
+interface InjectedProps {
   onFocus: React.EventHandler<FocusEvent<any>>;
   onBlur: React.EventHandler<FocusEvent<any>>;
   onMouseDown: React.EventHandler<MouseEvent<any>>;
@@ -14,10 +14,8 @@ interface WithKeyboardFocusInjectedProps {
  * to indicate a focus on the element, that wasn't triggered by mouse
  * or touch.
  */
-export default hoistStatics<WithKeyboardFocusInjectedProps>(
-  <T extends WithKeyboardFocusInjectedProps>(
-    WrappedComponent: React.ComponentType<T>
-  ) => {
+export default hoistStatics<InjectedProps>(
+  <T extends InjectedProps>(WrappedComponent: React.ComponentType<T>) => {
     class WithKeyboardFocus extends React.Component<any> {
       public state = {
         keyboardFocus: false,

@@ -3,23 +3,19 @@ import { compose, flattenProp } from "recompose";
 
 import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
 import { Omit } from "talk-framework/types";
-import { AppContainer as AppContainerData } from "talk-stream/__generated__/AppContainer.graphql";
+import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";
 
-import App, { AppProps as AppInnerProps } from "../components/App";
+import App, { AppProps as InnerProps } from "../components/App";
 
-interface DataProps {
-  data: AppContainerData;
-}
+export type AppContainerProps = { data: Data } & Omit<InnerProps, keyof Data>;
 
-export type AppProps = DataProps & Omit<AppInnerProps, keyof AppContainerData>;
-
-const enhance = compose<AppInnerProps, AppProps>(
+const enhance = compose<InnerProps, AppContainerProps>(
   withFragmentContainer(
     graphql`
       fragment AppContainer on Query {
         comments {
           id
-          ...Comment
+          ...CommentContainer
         }
       }
     `

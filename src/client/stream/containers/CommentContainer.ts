@@ -3,23 +3,19 @@ import { compose, flattenProp } from "recompose";
 
 import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
 import { Omit } from "talk-framework/types";
-import { Comment as CommentData } from "talk-stream/__generated__/Comment.graphql";
+import { CommentContainer as Data } from "talk-stream/__generated__/CommentContainer.graphql";
 
-import Comment, {
-  CommentProps as CommentInnerProps
-} from "../components/Comment";
+import Comment, { CommentProps as InnerProps } from "../components/Comment";
 
-interface DataProps {
-  data: CommentData;
-}
+export type CommentContainerProps = { data: Data } & Omit<
+  InnerProps,
+  keyof Data
+>;
 
-export type CommentProps = DataProps &
-  Omit<CommentInnerProps, keyof CommentData>;
-
-const enhance = compose<CommentInnerProps, CommentProps>(
+const enhance = compose<InnerProps, CommentContainerProps>(
   withFragmentContainer(
     graphql`
-      fragment Comment on Comment {
+      fragment CommentContainer on Comment {
         author
         body
       }

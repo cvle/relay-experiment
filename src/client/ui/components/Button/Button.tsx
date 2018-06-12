@@ -9,7 +9,7 @@ import { Overwrite } from "talk-ui/types";
 import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
 
-interface ButtonInnerProps extends BaseButtonProps {
+interface InnerProps extends BaseButtonProps {
   classes: Partial<typeof styles> & BaseButtonProps["classes"];
   fullWidth?: boolean;
   invert?: boolean;
@@ -18,11 +18,11 @@ interface ButtonInnerProps extends BaseButtonProps {
 }
 
 export type ButtonProps = Overwrite<
-  ButtonInnerProps,
-  Partial<Pick<ButtonInnerProps, "classes">>
+  InnerProps,
+  Partial<Pick<InnerProps, "classes">>
 >;
 
-class Button extends React.Component<ButtonInnerProps> {
+class Button extends React.Component<InnerProps> {
   public render() {
     const {
       classes,

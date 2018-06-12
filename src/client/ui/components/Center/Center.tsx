@@ -7,18 +7,18 @@ import { Overwrite } from "talk-ui/types";
 
 import * as styles from "./Center.css";
 
-interface CenterInnerProps {
+interface InnerProps {
   classes: Partial<typeof styles>;
   className?: string;
   children: ReactNode;
 }
 
 export type CenterProps = Overwrite<
-  CenterInnerProps,
-  Partial<Pick<CenterInnerProps, "classes">>
+  InnerProps,
+  Partial<Pick<InnerProps, "classes">>
 >;
 
-const Center: StatelessComponent<CenterInnerProps> = props => {
+const Center: StatelessComponent<InnerProps> = props => {
   return (
     <div className={cn(props.className, props.classes.root)}>
       {props.children}
