@@ -17,10 +17,6 @@ const enhance = compose<AppPropsIn, AppProps>(
   withFragmentContainer(
     graphql`
       fragment AppContainer on Query {
-        comment {
-          id
-          ...Comment
-        }
         comments {
           id
           ...Comment
