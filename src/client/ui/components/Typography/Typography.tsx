@@ -16,7 +16,7 @@ import * as styles from "./Typography.css";
 // Based on Typography Component of Material UI.
 // https://github.com/mui-org/material-ui/blob/303199d39b42a321d28347d8440d69166f872f27/packages/material-ui/src/Typography/Typography.js
 
-interface TypographyInnerProps extends HTMLAttributes<any> {
+interface InnerProps extends HTMLAttributes<any> {
   /**
    * Set the text-align on the component.
    */
@@ -84,11 +84,11 @@ interface TypographyInnerProps extends HTMLAttributes<any> {
 }
 
 export type TypographyProps = Overwrite<
-  TypographyInnerProps,
-  Partial<Pick<TypographyInnerProps, "classes">>
+  InnerProps,
+  Partial<Pick<InnerProps, "classes">>
 >;
 
-const Typography: StatelessComponent<TypographyInnerProps> = props => {
+const Typography: StatelessComponent<InnerProps> = props => {
   const {
     align,
     classes,
