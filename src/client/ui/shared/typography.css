@@ -1,5 +1,3 @@
-.root {}
-
 .heading1 {
   font-size: calc(24rem / $rem-base);
   font-weight: $font-weight-medium;
