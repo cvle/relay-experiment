@@ -6,8 +6,8 @@ const mapKeys = require('lodash/mapKeys');
 const flat = require('flat');
 
 
-delete require.cache[require.resolve('./src/client/ui/theme/variables')];
-const variables = require('./src/client/ui/theme/variables');
+delete require.cache[require.resolve('./src/client/ui/theme/variables.ts')];
+const variables = require('./src/client/ui/theme/variables.ts');
 const flatKebabVariables = mapKeys(flat(variables, {delimiter: '-'}), (_, k) => kebabCase(k));
 
 module.exports = {
