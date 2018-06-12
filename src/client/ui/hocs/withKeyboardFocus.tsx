@@ -1,10 +1,6 @@
 import * as React from "react";
 import { FocusEvent, HTMLAttributes, MouseEvent } from "react";
-import {
-  ComponentEnhancer,
-  hoistStatics,
-  InferableComponentEnhancerWithProps
-} from "recompose";
+import { ComponentEnhancer, hoistStatics } from "recompose";
 
 interface WithKeyboardFocusInjectedProps {
   onFocus: React.EventHandler<FocusEvent<any>>;
