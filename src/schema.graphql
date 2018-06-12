@@ -4,7 +4,22 @@ type Comment {
   body: String
 }
 
+input PostCommentInput {
+  body: String!
+  clientMutationId: String!
+}
+
+type PostCommentPayload {
+  comment: Comment!
+  clientMutationId: String!
+}
+
+type Mutation {
+  postComment(input: PostCommentInput!): PostCommentPayload
+}
+
 type Query {
   comment: Comment
   comments: [Comment]
 }
+

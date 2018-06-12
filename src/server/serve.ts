@@ -3,6 +3,7 @@ import { registerServer } from "apollo-server-express";
 import * as express from "express";
 import * as fs from "fs";
 import * as path from "path";
+import { v4 as uuid } from "uuid";
 
 const APP_PORT = 3000;
 const APP_HOST = "0.0.0.0";
@@ -25,11 +26,17 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    comment: () => ({ id: 10, author: "Markus", body: "hey" }),
+    comment: () => ({ id: uuid(), author: "Markus", body: "hey" }),
     comments: () => [
-      { id: 10, author: "Markus", body: "Hey" },
-      { id: 11, author: "Lukas", body: "What's up?" }
+      { id: uuid(), author: "Markus", body: "Hey" },
+      { id: uuid(), author: "Lukas", body: "What's up?" }
     ]
+  },
+  Mutation: {
+    postComment: (_, { input: { body, clientMutationId } }) => ({
+      comment: { id: uuid(), author: "You", body },
+      clientMutationId
+    })
   }
 };
 
