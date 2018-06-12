@@ -7,11 +7,11 @@ import { AppContainer as AppContainerData } from "talk-stream/__generated__/AppC
 
 import App, { AppProps as AppInnerProps } from "../components/App";
 
-interface QueryProps {
+interface DataProps {
   data: AppContainerData;
 }
 
-export type AppProps = QueryProps & Omit<AppInnerProps, keyof AppContainerData>;
+export type AppProps = DataProps & Omit<AppInnerProps, keyof AppContainerData>;
 
 const enhance = compose<AppInnerProps, AppProps>(
   withFragmentContainer(

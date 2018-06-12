@@ -9,11 +9,11 @@ import Comment, {
   CommentProps as CommentInnerProps
 } from "../components/Comment";
 
-interface QueryProps {
+interface DataProps {
   data: CommentData;
 }
 
-export type CommentProps = QueryProps &
+export type CommentProps = DataProps &
   Omit<CommentInnerProps, keyof CommentData>;
 
 const enhance = compose<CommentInnerProps, CommentProps>(
