@@ -1,15 +1,14 @@
-import * as cn from "classnames";
 import * as React from "react";
 import { StatelessComponent } from "react";
 
-import { Button, Center } from "talk-ui/components";
+import { Center } from "talk-ui/components";
 
 import CommentContainer from "../containers/CommentContainer";
+import PostCommentFormContainer from "../containers/PostCommentFormContainer";
 import Logo from "./Logo";
 
 export interface AppProps {
   comments: ReadonlyArray<{ id: string }>;
-  onPostComment: () => void;
 }
 
 const App: StatelessComponent<AppProps> = props => {
@@ -19,9 +18,7 @@ const App: StatelessComponent<AppProps> = props => {
       {props.comments.map(comment => (
         <CommentContainer key={comment.id} data={comment as any} gutterBottom />
       ))}
-      <Button onClick={props.onPostComment} primary>
-        Post
-      </Button>
+      <PostCommentFormContainer />
     </Center>
   );
 };
