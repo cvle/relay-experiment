@@ -1,1 +1,1 @@
-stream-postCommentForm-submit = Posten
+postCommentForm-submit = Posten

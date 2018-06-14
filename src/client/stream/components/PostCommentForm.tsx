@@ -4,7 +4,7 @@ import { StatelessComponent } from "react";
 import { Field, Form } from "react-final-form";
 
 import { required } from "talk-framework/lib/validation";
-import { Button } from "talk-ui/components";
+import { Button, Typography } from "talk-ui/components";
 
 import * as styles from "./PostCommentForm.css";
 
@@ -14,24 +14,28 @@ export interface PostCommentFormProps {
 
 const PostCommentForm: StatelessComponent<PostCommentFormProps> = props => (
   <Form onSubmit={props.onSubmit}>
-    {({ handleSubmit, submitting, invalid }) => (
+    {({ handleSubmit, submitting }) => (
       <form autoComplete="off" onSubmit={handleSubmit}>
         <Field name="body" validate={required}>
           {({ input, meta }) => (
-            <textarea
-              className={styles.textarea}
-              name={input.name}
-              onChange={input.onChange}
-              value={input.value}
-            />
+            <div>
+              <textarea
+                className={styles.textarea}
+                name={input.name}
+                onChange={input.onChange}
+                value={input.value}
+              />
+              {meta.touched &&
+                meta.error && (
+                  <Typography align="right" color="error" gutterBottom>
+                    {meta.error}
+                  </Typography>
+                )}
+            </div>
           )}
         </Field>
-        <Localized id="stream-postCommentForm-submit">
-          <Button
-            className={styles.postButton}
-            disabled={submitting || invalid}
-            primary
-          >
+        <Localized id="postCommentForm-submit">
+          <Button className={styles.postButton} disabled={submitting} primary>
             Post
           </Button>
         </Localized>

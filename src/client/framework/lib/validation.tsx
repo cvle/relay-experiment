@@ -1,3 +1,6 @@
+import { Localized } from "fluent-react/compat";
+import * as React from "react";
+
 /**
  * createNotificationService returns a notification services based on pym.
  * @param  {func}    condition   callback that checks that the given argument is valid.
@@ -26,4 +29,9 @@ export function composeValidators(...validators) {
  * required checks that the value is truthy.
  * @return {func}    validator fuction
  */
-export const required = createValidator(v => !!v, "Field is required");
+export const required = createValidator(
+  v => !!v,
+  <Localized id="framework-validation-required">
+    <span>Field is required</span>
+  </Localized>
+);
