@@ -73,6 +73,7 @@ function generateTarget(target, context) {
       loadables: {},
     };
 
+  # Bundled locales are directly available in the main bundle.
   ${bundled.map(locale => `
     {
       var suffixes = ${JSON.stringify(getLocaleFiles(locale).suffixes)};
@@ -85,6 +86,7 @@ function generateTarget(target, context) {
     }
   `).join("\n")}
 
+  # Loadables are in a separate bundle, that can be easily loaded.
   ${loadables.map(locale => `
     ret.loadables[${JSON.stringify(locale)}] = function() {
       var suffixes = ${JSON.stringify(getLocaleFiles(locale).suffixes)};
