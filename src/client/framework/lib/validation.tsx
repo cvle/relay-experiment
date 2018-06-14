@@ -32,6 +32,6 @@ export function composeValidators(...validators) {
 export const required = createValidator(
   v => !!v,
   <Localized id="framework-validation-required">
-    <span>Field is required</span>
+    <span>This field is required.</span>
   </Localized>
 );
