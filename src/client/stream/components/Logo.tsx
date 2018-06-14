@@ -1,3 +1,4 @@
+import { Localized } from "fluent-react/compat";
 import * as React from "react";
 import { StatelessComponent } from "react";
 
@@ -10,9 +11,11 @@ export interface LogoProps {
 
 const Logo: StatelessComponent<LogoProps> = props => {
   return (
-    <Typography variant="heading1" gutterBottom={props.gutterBottom}>
-      Talk NEO
-    </Typography>
+    <Localized id="stream-logo">
+      <Typography variant="heading1" gutterBottom={props.gutterBottom}>
+        Talk NEO
+      </Typography>
+    </Localized>
   );
 };
 
