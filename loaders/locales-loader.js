@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const camelCase = require('lodash/camelCase');
 const upperFirst = require('lodash/upperFirst');
+const memoize = require('lodash/memoize');
 
 const pascalCase = (x) => upperFirst(camelCase(x));
 
@@ -37,19 +38,12 @@ const DEFAULT_QUERY_VALUES = {
 
 function getFiles(target, pathToLocale, context) {
   const {pathToLocales, commonFiles} = context;
-  return fs.readdirSync(pathToLocale)
-    .filter(path => commonFiles.includes(path) || path.startsWith(target));
-}
 
-function generateTarget(target, context) {
-  const {defaultLocale, fallbackLocale, pathToLocales, locales, commonFiles, bundled} = context;
-  const getLocalePath = locale => path.join(pathToLocales, locale);
-  const files = getFiles(target, getLocalePath(defaultLocale), context);
-  const loadables = locales.filter(local => !bundled.includes(local));
-
-  // Prepare files.
   const common = [];
   const suffixes = [];
+
+  const files = fs.readdirSync(pathToLocale);
+
   files.forEach(f => {
     if (commonFiles.includes(f)) {
       common.push(f);
@@ -59,12 +53,18 @@ function generateTarget(target, context) {
       suffixes.push(f.substr(target.length));
       return;
     }
-    throw new Error(`Unknown file ${f} ${target}`);
   });
 
-  return `
-    var suffixes = ${JSON.stringify(suffixes)};
+  return {common, suffixes};
+}
 
+function generateTarget(target, context) {
+  const {defaultLocale, fallbackLocale, pathToLocales, locales, commonFiles, bundled} = context;
+  const getLocalePath = locale => path.join(pathToLocales, locale);
+  const getLocaleFiles = memoize(locale => getFiles(target, getLocalePath(locale), context));
+  const loadables = locales.filter(local => !bundled.includes(local));
+
+  return `
     var ret = {
       defaultLocale: ${JSON.stringify(defaultLocale)},
       fallbackLocale: ${JSON.stringify(fallbackLocale)},
@@ -75,10 +75,11 @@ function generateTarget(target, context) {
 
   ${bundled.map(locale => `
     {
+      var suffixes = ${JSON.stringify(getLocaleFiles(locale).suffixes)};
       var contents = [];
-    ${common.map(file => `
+    ${getLocaleFiles(locale).common.map(file => `
       contents.push(require('${getLocalePath(locale)}/${file}'));
-    `)}
+    `).join("\n")}
       contents = contents.concat(suffixes.map(function(suffix) { return require(\`${getLocalePath(locale)}/${target}\${suffix}\`); }));
       ret.bundled[${JSON.stringify(locale)}] = contents.join("\\n");
     }
@@ -86,15 +87,16 @@ function generateTarget(target, context) {
 
   ${loadables.map(locale => `
     ret.loadables[${JSON.stringify(locale)}] = function() {
+      var suffixes = ${JSON.stringify(getLocaleFiles(locale).suffixes)};
       var promises = [];
-    ${common.map(file => `
+    ${getLocaleFiles(locale).common.map(file => `
       promises.push(
         import(
           /* webpackChunkName: ${JSON.stringify(`${target}-locale-${locale}`)}, webpackMode: "lazy" */
           '${getLocalePath(locale)}/${file}'
         )
       );
-    `)}
+    `).join("\n")}
       promises = promises.concat(suffixes.map(function(suffix) {
         return import(
           /* webpackChunkName: ${JSON.stringify(`${target}-locale-${locale}`)}, webpackMode: "lazy-once" */

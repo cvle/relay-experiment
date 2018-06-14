@@ -38,7 +38,7 @@ const i18n = {
   fallbackLocale: 'en-US',
 
   // Common fluent files are always included in the locale bundles.
-  commonFiles: ['framework.ftl'],
+  commonFiles: ['framework.ftl', 'common.ftl'],
 
   // Locales that come with the main bundle. Others are loaded on demand.
   bundled: ['en-US'],
