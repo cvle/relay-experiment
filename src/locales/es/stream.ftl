@@ -1,0 +1,2 @@
+stream-postCommentForm
+  .submit = Post

@@ -135,6 +135,10 @@
   version "7.0.0-beta.49"
   resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.49.tgz#0e9fcbb834f878bb365d2a8ea90eee21ba3ccd23"
 
+"@babel/helper-plugin-utils@7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/helper-plugin-utils/-/helper-plugin-utils-7.0.0-beta.51.tgz#0f6a5f2b6d1c6444413f8fab60940d79b63c2031"
+
 "@babel/helper-regex@7.0.0-beta.49":
   version "7.0.0-beta.49"
   resolved "https://registry.yarnpkg.com/@babel/helper-regex/-/helper-regex-7.0.0-beta.49.tgz#ff244f19c2a2f167ff4b3165a636b08fd641816b"
@@ -238,6 +242,12 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.0.0-beta.49.tgz#50ee943002aedc9ab3a8d12292bd35dd9edb1df8"
   dependencies:
     "@babel/helper-plugin-utils" "7.0.0-beta.49"
+
+"@babel/plugin-syntax-dynamic-import@^7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.0.0-beta.51.tgz#9c0aeef57d0678e3726db171aa73e474a25de7f2"
+  dependencies:
+    "@babel/helper-plugin-utils" "7.0.0-beta.51"
 
 "@babel/plugin-syntax-jsx@7.0.0-beta.49":
   version "7.0.0-beta.49"
@@ -3229,6 +3239,27 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+fluent-intl-polyfill@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/fluent-intl-polyfill/-/fluent-intl-polyfill-0.1.0.tgz#1133944ab2477883473995596883e0d39cf885cf"
+  dependencies:
+    intl-pluralrules projectfluent/IntlPluralRules#module
+
+fluent-langneg@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/fluent-langneg/-/fluent-langneg-0.1.0.tgz#aa12054fbfa4b728daec38331efc12f01faae93a"
+
+fluent-react@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/fluent-react/-/fluent-react-0.7.0.tgz#52b499fca4c5163ccaf4b5155bd5486feed0e4c1"
+  dependencies:
+    fluent "^0.4.0 || ^0.6.0"
+    prop-types "^15.6.0"
+
+"fluent@^0.4.0 || ^0.6.0", fluent@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/fluent/-/fluent-0.6.4.tgz#6bb218423220ce87b1414fda6371d4d5f3da1945"
+
 flush-write-stream@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.0.3.tgz#c5d586ef38af6097650b49bc41b55fabb19f35bd"
@@ -3832,6 +3863,10 @@ internal-ip@1.2.0:
 interpret@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
+
+intl-pluralrules@projectfluent/IntlPluralRules#module:
+  version "0.1.0"
+  resolved "https://codeload.github.com/projectfluent/IntlPluralRules/tar.gz/94cb0fa1c23ad943bc5aafef43cea132fa51d68b"
 
 invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.4"
@@ -5991,6 +6026,10 @@ raw-body@2.3.3:
     iconv-lite "0.4.23"
     unpipe "1.0.0"
 
+raw-loader@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+
 rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -6760,6 +6799,13 @@ streamsearch@0.1.2:
 strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
+
+string-replace-loader@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/string-replace-loader/-/string-replace-loader-2.1.1.tgz#b72e7b57b6ef04efe615aff0ad989b5c14ca63d1"
+  dependencies:
+    loader-utils "^1.1.0"
+    schema-utils "^0.4.5"
 
 string-width@^1.0.1:
   version "1.0.2"

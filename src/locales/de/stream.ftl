@@ -1,0 +1,1 @@
+stream-postCommentForm-submit = Posten

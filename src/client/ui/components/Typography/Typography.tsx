@@ -1,4 +1,4 @@
-import * as cn from "classnames";
+import cn from "classnames";
 import { capitalize } from "lodash";
 import * as React from "react";
 import {

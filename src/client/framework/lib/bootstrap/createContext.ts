@@ -1,5 +1,6 @@
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
+import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
 import { TalkContext } from "./TalkContext";
 
 function fetchQuery(operation, variables) {
@@ -20,13 +21,27 @@ function fetchQuery(operation, variables) {
   });
 }
 
-export default function createContext(): TalkContext {
+interface CreateContextArguments {
+  userLocales: ReadonlyArray<string>;
+  localesData: LocalesData;
+}
+
+export default async function createContext(
+  args: CreateContextArguments
+): Promise<TalkContext> {
   const relayEnvironment = new Environment({
     network: Network.create(fetchQuery),
     store: new Store(new RecordSource())
   });
 
+  const locales = negotiateLanguages(args.userLocales, args.localesData);
+
+  console.log(`Negotiated locales ${JSON.stringify(locales)}`);
+
+  const localeMessages = await generateMessages(locales, args.localesData);
+
   return {
-    relayEnvironment
+    relayEnvironment,
+    localeMessages
   };
 }

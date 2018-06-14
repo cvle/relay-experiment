@@ -1,3 +1,4 @@
+import { Localized } from "fluent-react/compat";
 import * as React from "react";
 import { StatelessComponent } from "react";
 import { Field, Form } from "react-final-form";
@@ -25,13 +26,15 @@ const PostCommentForm: StatelessComponent<PostCommentFormProps> = props => (
             />
           )}
         </Field>
-        <Button
-          className={styles.postButton}
-          disabled={submitting || invalid}
-          primary
-        >
-          Post
-        </Button>
+        <Localized id="stream-postCommentForm-submit">
+          <Button
+            className={styles.postButton}
+            disabled={submitting || invalid}
+            primary
+          >
+            Post
+          </Button>
+        </Localized>
       </form>
     )}
   </Form>

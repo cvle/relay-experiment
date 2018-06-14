@@ -1,8 +1,8 @@
 import { ApolloServer, gql } from "apollo-server";
 import { registerServer } from "apollo-server-express";
-import * as express from "express";
-import * as fs from "fs";
-import * as path from "path";
+import express from "express";
+import fs from "fs";
+import path from "path";
 import { v4 as uuid } from "uuid";
 
 const APP_PORT = 3000;

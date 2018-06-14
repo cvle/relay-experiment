@@ -1,5 +1,5 @@
-import * as cn from "classnames";
-import * as React from "react";
+import cn from "classnames";
+import React from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
 import { compose } from "recompose";
 
