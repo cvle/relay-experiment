@@ -1,3 +1,4 @@
+import { noop } from "lodash";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
@@ -22,26 +23,35 @@ function fetchQuery(operation, variables) {
 }
 
 interface CreateContextArguments {
+  source?: RecordSource;
   userLocales: ReadonlyArray<string>;
   localesData: LocalesData;
+  init?: ((context: TalkContext) => void);
 }
 
-export default async function createContext(
-  args: CreateContextArguments
-): Promise<TalkContext> {
+export default async function createContext({
+  source = new RecordSource(),
+  init = noop,
+  userLocales,
+  localesData
+}: CreateContextArguments): Promise<TalkContext> {
   const relayEnvironment = new Environment({
     network: Network.create(fetchQuery),
-    store: new Store(new RecordSource())
+    store: new Store(source)
   });
 
-  const locales = negotiateLanguages(args.userLocales, args.localesData);
+  const locales = negotiateLanguages(userLocales, localesData);
 
   console.log(`Negotiated locales ${JSON.stringify(locales)}`);
 
-  const localeMessages = await generateMessages(locales, args.localesData);
+  const localeMessages = await generateMessages(locales, localesData);
 
-  return {
+  const context = {
     relayEnvironment,
     localeMessages
   };
+
+  await init(context);
+
+  return context;
 }

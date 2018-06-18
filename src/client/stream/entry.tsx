@@ -4,15 +4,22 @@ import * as ReactDOM from "react-dom";
 
 import {
   createContext,
+  TalkContext,
   TalkContextProvider
 } from "talk-framework/lib/bootstrap";
 import { graphql, QueryRenderer } from "talk-framework/lib/relay";
 
+import { initLocalState } from "./local";
 import localesData from "./locales";
 import AppQuery from "./queries/AppQuery";
 
+function init({ relayEnvironment }) {
+  return initLocalState(relayEnvironment);
+}
+
 async function main() {
   const context = await createContext({
+    init,
     localesData,
     userLocales: navigator.languages
   });

@@ -2,7 +2,10 @@ import * as React from "react";
 import { graphql } from "react-relay";
 import { compose, flattenProp } from "recompose";
 
-import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
+import {
+  withFragmentContainer,
+  withLocalStateContainer
+} from "talk-framework/lib/relay";
 import { Omit } from "talk-framework/types";
 import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";
 
@@ -13,6 +16,15 @@ export interface AppContainerProps {
 }
 
 const enhance = compose<InnerProps, AppContainerProps>(
+  withLocalStateContainer(
+    graphql`
+      fragment AppContainerLocal on Local {
+        network {
+          isOffline
+        }
+      }
+    `
+  ),
   withFragmentContainer(
     graphql`
       fragment AppContainer on Query {

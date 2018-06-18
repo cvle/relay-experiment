@@ -5,13 +5,15 @@ import { compose, mapProps } from "recompose";
 import PostCommentForm, {
   PostCommentFormProps as InnerProps
 } from "../components/PostCommentForm";
-import { withPostCommentMutation } from "../mutations/PostCommentMutation";
+import { withPostCommentMutation, withSetNetworkStatusMutation } from "../mutations";
 
 const enhance = compose<InnerProps, {}>(
   withPostCommentMutation,
-  mapProps(({ postComment }) => ({
+  withSetNetworkStatusMutation,
+  mapProps(({ postComment, setNetworkStatus }) => ({
     onSubmit: (input, form) => {
       postComment(input);
+      setNetworkStatus({isOffline: true});
       form.reset();
     }
   }))
