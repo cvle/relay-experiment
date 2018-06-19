@@ -21,6 +21,7 @@
     "babel-preset-react-optimize": "^1.0.1",
     "classnames": "^2.2.5",
     "copy-webpack-plugin": "^4.5.1",
+    "cross-spawn": "^6.0.5",
     "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "final-form": "^4.8.1",
@@ -74,5 +75,10 @@
     "watch:relay:stream": "nodemon --config .nodemon.relay-stream.json",
     "watch:server": "nodemon --config .nodemon.server.json",
     "compile:relay:stream": "NODE_PATH=./vendor ./vendor/relay-compiler/bin/relay-compiler --src ./src/client/stream --schema src/schema.graphql --language typescript --artifactDirectory ./src/client/stream/__generated__ --no-watchman"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "fb-watchman": "^2.0.0"
   }
 }
