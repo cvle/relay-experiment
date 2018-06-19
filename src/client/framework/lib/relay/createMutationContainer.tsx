@@ -6,7 +6,7 @@ import { withContext } from "../bootstrap";
 
 function createMutationContainer<T extends string, U>(
   propName: T,
-  commit: (environment: Environment, input: U) => void
+  commit: (environment: Environment, input: U) => Promise<any>
 ): InferableComponentEnhancer<{ [P in T]: (input: U) => void }> {
   return compose(
     withContext(({ relayEnvironment }) => ({ relayEnvironment })),

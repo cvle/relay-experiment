@@ -25,12 +25,12 @@ const PostCommentForm: StatelessComponent<PostCommentFormProps> = props => (
                 onChange={input.onChange}
                 value={input.value}
               />
-              {meta.touched &&
-                meta.error && (
+              {(meta.touched && meta.error) ||
+                (meta.submitError && (
                   <Typography align="right" color="error" gutterBottom>
-                    {meta.error}
+                    {meta.error || meta.submitError}
                   </Typography>
-                )}
+                ))}
             </div>
           )}
         </Field>

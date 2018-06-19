@@ -1,4 +1,4 @@
-# local.graphql
+# Extend graph with local types
 type Network {
   isOffline: Boolean!
 }

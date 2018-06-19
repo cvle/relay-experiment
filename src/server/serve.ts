@@ -1,5 +1,5 @@
-import { ApolloServer, gql } from "apollo-server";
-import { registerServer } from "apollo-server-express";
+import { BadUserInputError, gql } from "apollo-server";
+import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import fs from "fs";
 import path from "path";
@@ -41,7 +41,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });
-registerServer({ server, app, path: "/graphql" });
+server.applyMiddleware({ app });
 
 app.listen(APP_PORT, APP_HOST, () => {
   console.log(`🚀 Server ready at ${APP_HOST}:${APP_PORT}`);

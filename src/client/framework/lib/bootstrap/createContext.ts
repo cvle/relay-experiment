@@ -1,6 +1,7 @@
 import { noop } from "lodash";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
+import { NetworkError } from "../errors";
 import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
 import { TalkContext } from "./TalkContext";
 
@@ -17,9 +18,18 @@ function fetchQuery(operation, variables) {
         variables
       })
     }
-  ).then(response => {
-    return response.json();
-  });
+  )
+    .then(response => {
+      return response.json();
+    })
+    .catch(err => {
+      if (err instanceof TypeError) {
+        // Network error, e.g. offline.
+        throw new NetworkError("TypeError", err.message);
+      }
+      // Unknown error.
+      throw new NetworkError("Unknown", err);
+    });
 }
 
 interface CreateContextArguments {

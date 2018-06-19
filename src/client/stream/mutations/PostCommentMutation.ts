@@ -1,7 +1,10 @@
-import { commitMutation, graphql } from "react-relay";
+import { graphql } from "react-relay";
 import { ConnectionHandler } from "relay-runtime";
 
-import { createMutationContainer } from "talk-framework/lib/relay";
+import {
+  commitMutationPromiseNormalized,
+  createMutationContainer
+} from "talk-framework/lib/relay";
 import { Omit } from "talk-framework/types";
 import { PostCommentMutationVariables } from "talk-stream/__generated__/PostCommentMutation.graphql";
 
@@ -27,7 +30,7 @@ const mutation = graphql`
 let clientMutationId = 0;
 
 function commit(environment, input: PostCommentInput) {
-  return commitMutation(environment, {
+  return commitMutationPromiseNormalized(environment, {
     mutation,
     variables: {
       input: {
@@ -37,10 +40,12 @@ function commit(environment, input: PostCommentInput) {
     },
     updater: store => {
       const payload = store.getRootField("postComment");
-      const newRecord = payload.getLinkedRecord("comment");
-      const root = store.get("client:root");
-      const records = root.getLinkedRecords("comments");
-      root.setLinkedRecords([...records, newRecord], "comments");
+      if (payload) {
+        const newRecord = payload.getLinkedRecord("comment");
+        const root = store.get("client:root");
+        const records = root.getLinkedRecords("comments");
+        root.setLinkedRecords([...records, newRecord], "comments");
+      }
     }
   });
 }
