@@ -5,6 +5,7 @@ npm-debug.log*
 yarn-error.log
 
 .idea/
+.docz
 *.swp
 *.DS_STORE
 .prettierrc.json
