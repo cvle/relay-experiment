@@ -3,7 +3,8 @@ const extensions = [".ts", ".tsx", ".js"];
 
 export default {
   title: "Talk 5.0",
-  source: "./src",
+  source: "./",
+  files: "@(docs|src)/**/*.mdx",
   modifyBundlerConfig: (config) => {
     config.module.rules.push({
       test: /\.css$/,

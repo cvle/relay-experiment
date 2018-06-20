@@ -27,7 +27,7 @@ const babelOptions = {
 
 /* i18n */
 const i18n = {
-  pathToLocales: path.resolve(__dirname, "./src/locales"),
+  pathToLocales: path.resolve(__dirname, "./locales"),
 
   // Default locale if non could be negotiated.
   defaultLocale: 'en-US',
