@@ -66,10 +66,11 @@
     "vendor/*"
   ],
   "scripts": {
-    "clean": "rm -rf dist",
     "start": "NODE_ENV=production ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
     "start:development": "NODE_ENV=development ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
-    "watch": "npm-run-all clean compile:relay:* --parallel watch:*",
+    "setup": "node scripts/development.js setup",
+    "watch": "node scripts/development.js watch",
+    "watch-old": "npm-run-all clean compile:relay:* --parallel watch:*",
     "watch:css": "tcm src/client/ --watch",
     "watch:client": "NODE_ENV=development webpack-dev-server --host 0.0.0.0",
     "watch:relay:stream": "nodemon --config .nodemon.relay-stream.json",
