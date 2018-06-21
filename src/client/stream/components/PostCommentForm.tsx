@@ -3,13 +3,18 @@ import * as React from "react";
 import { StatelessComponent } from "react";
 import { Field, Form } from "react-final-form";
 
+import { OnSubmit } from "talk-framework/lib/form";
 import { required } from "talk-framework/lib/validation";
 import { Button, Typography } from "talk-ui/components";
 
 import * as styles from "./PostCommentForm.css";
 
+interface FormProps {
+  body: string;
+}
+
 export interface PostCommentFormProps {
-  onSubmit: (input: { body: string }) => void;
+  onSubmit: OnSubmit<FormProps>;
 }
 
 const PostCommentForm: StatelessComponent<PostCommentFormProps> = props => (

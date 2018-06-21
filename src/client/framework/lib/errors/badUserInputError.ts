@@ -4,12 +4,18 @@ import { VALIDATION_REQUIRED, VALIDATION_TOO_SHORT } from "../messages";
 
 type ValidationError = "TOO_SHORT";
 
+interface InvalidArgsMap {
+  [key: string]: ValidationError;
+}
+
+interface InvalidArgsMapLocalilzed {
+  [key: string]: ReactNode;
+}
+
 interface BadUserInput {
   code: "BAD_USER_INPUT";
   exception: {
-    invalidArgs: {
-      [key: string]: ValidationError;
-    };
+    invalidArgs: InvalidArgsMap;
   };
 }
 
@@ -31,11 +37,11 @@ export default class BadUserInputError extends Error {
     this.origin = error;
   }
 
-  get invalidArgs() {
+  get invalidArgs(): InvalidArgsMap {
     return this.origin.exception.invalidArgs;
   }
 
-  get invalidArgsLocalized(): { [key: string]: ReactNode } {
+  get invalidArgsLocalized(): InvalidArgsMapLocalilzed {
     return this.computeInvalidArgsLocalized();
   }
 

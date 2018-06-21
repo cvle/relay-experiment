@@ -16,7 +16,7 @@ const App: StatelessComponent<AppProps> = props => {
     <Center>
       <Logo gutterBottom />
       {props.comments.map(comment => (
-        <CommentContainer key={comment.id} data={comment as any} gutterBottom />
+        <CommentContainer key={comment.id} data={comment} gutterBottom />
       ))}
       <PostCommentFormContainer />
     </Center>

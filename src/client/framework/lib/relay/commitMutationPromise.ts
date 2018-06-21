@@ -5,8 +5,8 @@ import { Omit } from "talk-framework/types";
 
 import { BadUserInputError } from "../errors";
 
-export type MutationConfigPromise<T> = Omit<
-  MutationConfig<T>,
+export type MutationConfigPromise<T, U> = Omit<
+  MutationConfig<T, U>,
   "onCompleted" | "onError"
 >;
 
@@ -44,10 +44,10 @@ function getError(error) {
   return e;
 }
 
-export async function commitMutationPromiseNormalized<T = any>(
+export async function commitMutationPromiseNormalized<R = any, V = any>(
   environment: Environment,
-  config: MutationConfigPromise<T>
-) {
+  config: MutationConfigPromise<R, V>
+): Promise<R> {
   try {
     const response = await commitMutationPromise(environment, config);
     return getPayload(response);
@@ -56,11 +56,11 @@ export async function commitMutationPromiseNormalized<T = any>(
   }
 }
 
-export function commitMutationPromise<T = any>(
+export function commitMutationPromise<R = any, V = any>(
   environment: Environment,
-  config: MutationConfigPromise<T>
-) {
-  return new Promise<any>((resolve, reject) => {
+  config: MutationConfigPromise<R, V>
+): Promise<R> {
+  return new Promise((resolve, reject) => {
     commitMutation(environment, {
       ...config,
       onCompleted: (response, errors) => {

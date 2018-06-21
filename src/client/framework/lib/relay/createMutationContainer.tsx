@@ -4,10 +4,10 @@ import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 import { withContext } from "../bootstrap";
 
-function createMutationContainer<T extends string, U>(
+function createMutationContainer<T extends string, I, R>(
   propName: T,
-  commit: (environment: Environment, input: U) => Promise<any>
-): InferableComponentEnhancer<{ [P in T]: (input: U) => void }> {
+  commit: (environment: Environment, input: I) => Promise<R>
+): InferableComponentEnhancer<{ [P in T]: (input: I) => Promise<R> }> {
   return compose(
     withContext(({ relayEnvironment }) => ({ relayEnvironment })),
     hoistStatics((WrappedComponent: React.ComponentType<any>) => {

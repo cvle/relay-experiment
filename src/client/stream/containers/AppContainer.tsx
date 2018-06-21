@@ -1,31 +1,35 @@
-import * as React from "react";
+import React, { StatelessComponent } from "react";
 import { graphql } from "react-relay";
-import { compose, flattenProp } from "recompose";
 
 import {
   withFragmentContainer,
   withLocalStateContainer
 } from "talk-framework/lib/relay";
-import { Omit } from "talk-framework/types";
+import { ReturnPropTypes } from "talk-framework/types";
 import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";
+import { AppContainerLocal as Local } from "talk-stream/__generated__/AppContainerLocal.graphql";
 
-import App, { AppProps as InnerProps } from "../components/App";
+import App from "../components/App";
 
-export interface AppContainerProps {
-  data: any;
+interface InnerProps {
+  data: Data;
+  local: Local;
 }
 
-const enhance = compose<InnerProps, AppContainerProps>(
-  withLocalStateContainer(
-    graphql`
-      fragment AppContainerLocal on Local {
-        network {
-          isOffline
-        }
+const AppContainer: StatelessComponent<InnerProps> = props => {
+  return <App {...props.data} />;
+};
+
+const enhanced = withLocalStateContainer<Local>(
+  graphql`
+    fragment AppContainerLocal on Local {
+      network {
+        isOffline
       }
-    `
-  ),
-  withFragmentContainer(
+    }
+  `
+)(
+  withFragmentContainer<Data>(
     graphql`
       fragment AppContainer on Query {
         comments {
@@ -34,8 +38,8 @@ const enhance = compose<InnerProps, AppContainerProps>(
         }
       }
     `
-  ),
-  flattenProp("data")
+  )(AppContainer)
 );
 
-export default enhance(App);
+export type AppContainerProps = ReturnPropTypes<typeof enhanced>;
+export default enhanced;
