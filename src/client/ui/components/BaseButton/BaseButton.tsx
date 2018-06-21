@@ -1,10 +1,9 @@
 import cn from "classnames";
-import React from "react";
+import React, { ComponentType } from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
-import { compose } from "recompose";
 
 import { withKeyboardFocus, withStyles } from "talk-ui/hocs";
-import { Omot, Overwrite } from "talk-ui/types";
+import { ReturnPropTypes } from "talk-ui/types";
 
 import * as styles from "./BaseButton.css";
 
@@ -19,11 +18,6 @@ interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
   keyboardFocus: boolean;
 }
-
-export type BaseButtonProps = Overwrite<
-  Omit<InnerProps, "keyboardFocus">,
-  Partial<Pick<InnerProps, "classes">>
->;
 
 /**
  * A button whose styling is stripped off to a minimum and supports
@@ -44,6 +38,7 @@ const BaseButton: StatelessComponent<InnerProps> = ({
 
   let type = typeProp;
   if (anchor && type) {
+    // tslint:disable:next-line: no-console
     console.warn(
       "BaseButton used as anchor does not support the `type` property"
     );
@@ -59,9 +54,6 @@ const BaseButton: StatelessComponent<InnerProps> = ({
   return <Element {...rest} className={rootClassName} />;
 };
 
-const enhance = compose<InnerProps, BaseButtonProps>(
-  withStyles(styles),
-  withKeyboardFocus
-);
-
-export default enhance(BaseButton);
+const enhanced = withStyles(styles)(withKeyboardFocus(BaseButton));
+export type BaseButtonProps = ReturnPropTypes<typeof enhanced>;
+export default enhanced;

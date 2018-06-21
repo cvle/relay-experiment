@@ -9,7 +9,7 @@ import {
 } from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { Overwrite } from "talk-ui/types";
+import { ReturnPropTypes } from "talk-ui/types";
 
 import * as styles from "./Typography.css";
 
@@ -83,11 +83,6 @@ interface InnerProps extends HTMLAttributes<any> {
     | "button";
 }
 
-export type TypographyProps = Overwrite<
-  InnerProps,
-  Partial<Pick<InnerProps, "classes">>
->;
-
 const Typography: StatelessComponent<InnerProps> = props => {
   const {
     align,
@@ -141,4 +136,6 @@ Typography.defaultProps = {
   variant: "body1"
 };
 
-export default withStyles(styles)(Typography) as ComponentType<TypographyProps>;
+const enhanced = withStyles(styles)(Typography);
+export type CenterProps = ReturnPropTypes<typeof enhanced>;
+export default enhanced;

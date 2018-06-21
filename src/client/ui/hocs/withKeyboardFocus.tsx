@@ -3,10 +3,10 @@ import { FocusEvent, HTMLAttributes, MouseEvent } from "react";
 import { ComponentEnhancer, hoistStatics } from "recompose";
 
 interface InjectedProps {
-  onFocus: React.EventHandler<FocusEvent<any>>;
-  onBlur: React.EventHandler<FocusEvent<any>>;
-  onMouseDown: React.EventHandler<MouseEvent<any>>;
-  keyboardFocus: boolean;
+  onFocus?: React.EventHandler<FocusEvent<any>>;
+  onBlur?: React.EventHandler<FocusEvent<any>>;
+  onMouseDown?: React.EventHandler<MouseEvent<any>>;
+  keyboardFocus?: boolean;
 }
 
 /**

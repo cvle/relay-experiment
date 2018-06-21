@@ -3,7 +3,7 @@ import * as React from "react";
 import { ComponentType, ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { Overwrite } from "talk-ui/types";
+import { ReturnPropTypes } from "talk-ui/types";
 
 import * as styles from "./Center.css";
 
@@ -13,11 +13,6 @@ interface InnerProps {
   children: ReactNode;
 }
 
-export type CenterProps = Overwrite<
-  InnerProps,
-  Partial<Pick<InnerProps, "classes">>
->;
-
 const Center: StatelessComponent<InnerProps> = props => {
   return (
     <div className={cn(props.className, props.classes.root)}>
@@ -26,4 +21,6 @@ const Center: StatelessComponent<InnerProps> = props => {
   );
 };
 
-export default withStyles(styles)(Center) as ComponentType<CenterProps>;
+const enhanced = withStyles(styles)(Center);
+export type CenterProps = ReturnPropTypes<typeof enhanced>;
+export default enhanced;

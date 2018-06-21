@@ -4,9 +4,9 @@ import * as React from "react";
 import { ComponentType, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { Overwrite } from "talk-ui/types";
+import { ReturnPropTypes } from "talk-ui/types";
 
-import BaseButton, { BaseButtonProps } from "../BaseButton/index.ts";
+import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
 
 interface InnerProps extends BaseButtonProps {
@@ -16,11 +16,6 @@ interface InnerProps extends BaseButtonProps {
   primary?: boolean;
   secondary?: boolean;
 }
-
-export type ButtonProps = Overwrite<
-  InnerProps,
-  Partial<Pick<InnerProps, "classes">>
->;
 
 class Button extends React.Component<InnerProps> {
   public render() {
@@ -51,4 +46,6 @@ class Button extends React.Component<InnerProps> {
   }
 }
 
-export default withStyles(styles)(Button) as ComponentType<ButtonProps>;
+const enhanced = withStyles(styles)(Button);
+export type ButtonProps = ReturnPropTypes<typeof enhanced>;
+export default enhanced;
