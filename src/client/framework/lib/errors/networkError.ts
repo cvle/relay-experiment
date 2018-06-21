@@ -1,14 +1,18 @@
+/**
+ * NetworkError wraps errors at the network layer.
+ */
 export default class NetworkError extends Error {
-  public type: string;
+  // Original error.
+  public readonly origin: Error;
 
-  constructor(type: string, ...params: any[]) {
-    // Pass remaining arguments (including vendor specific ones) to parent constructor
-    super(...params);
+  constructor(origin: Error) {
+    // Pass remaining arguments (including vendor specific ones) to parent constructor.
+    super(origin.message);
 
-    // Maintains proper stack trace for where our error was thrown (only available on V8)
+    // Maintains proper stack trace for where our error was thrown.
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, NetworkError);
     }
-    this.type = type;
+    this.origin = origin;
   }
 }

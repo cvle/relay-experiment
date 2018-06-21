@@ -47,7 +47,7 @@ function commit(environment: Environment, input: PostCommentInput) {
       const payload = store.getRootField("postComment");
       if (payload) {
         const newRecord = payload.getLinkedRecord("comment");
-        const root = store.get("client:root");
+        const root = store.getRoot();
         const records = root.getLinkedRecords("comments");
         root.setLinkedRecords([...records, newRecord], "comments");
       }

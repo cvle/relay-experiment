@@ -4,6 +4,13 @@ import { Environment } from "relay-runtime";
 
 import { withContext } from "../bootstrap";
 
+/**
+ * createMutationContainer creates a HOC that
+ * injects a property with the name specified in `propName`
+ * and the signature (input: I) => Promise<R>. Calling
+ * this will call the specified `commit` callback with
+ * the Relay `environment` provided by the context.
+ */
 function createMutationContainer<T extends string, I, R>(
   propName: T,
   commit: (environment: Environment, input: I) => Promise<R>
@@ -29,7 +36,4 @@ function createMutationContainer<T extends string, I, R>(
   );
 }
 
-/**
- * createMutationContainer
- */
 export default createMutationContainer;

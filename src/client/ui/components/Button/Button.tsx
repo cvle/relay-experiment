@@ -9,10 +9,22 @@ import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
 
 interface InnerProps extends BaseButtonProps {
+  /**
+   * This prop can be used to add custom classnames.
+   * It is handled by the `withStyles `HOC.
+   */
   classes: Partial<typeof styles> & BaseButtonProps["classes"];
+
+  /** If set renders a full width button */
   fullWidth?: boolean;
+
+  /** If set renders a button with inverted borders */
   invert?: boolean;
+
+  /** If set renders a button with primary colors */
   primary?: boolean;
+
+  /** If set renders a button with secondary colors */
   secondary?: boolean;
 }
 

@@ -8,6 +8,10 @@ import { ReturnPropTypes } from "talk-ui/types";
 import * as styles from "./Center.css";
 
 interface InnerProps {
+  /**
+   * This prop can be used to add custom classnames.
+   * It is handled by the `withStyles `HOC.
+   */
   classes: Partial<typeof styles>;
   className?: string;
   children: ReactNode;

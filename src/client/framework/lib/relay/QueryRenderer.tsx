@@ -20,6 +20,11 @@ export interface ReadyState<R> {
   retry?(): void;
 }
 
+/**
+ * TalkQueryRenderer is a wrappper around  Relay's `QueryRenderer`.
+ * It supplies the `environment` from the context and has better
+ * generics type support.
+ */
 class TalkQueryRenderer<V, R> extends Component<QueryRendererProps<V, R>> {
   public render() {
     return (

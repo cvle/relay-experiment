@@ -13,15 +13,19 @@ interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** If set renders an anchor tag instead */
   anchor?: boolean;
 
-  /** Extend existing styles by adding your custom classnames */
+  /**
+   * This prop can be used to add custom classnames.
+   * It is handled by the `withStyles `HOC.
+   */
   classes: Partial<typeof styles>;
 
+  /** This is passed by the `withKeyboardFocus` HOC */
   keyboardFocus: boolean;
 }
 
 /**
  * A button whose styling is stripped off to a minimum and supports
- * keyboard focus. It is the base for the our other buttons.
+ * keyboard focus. It is the base for our other buttons.
  */
 const BaseButton: StatelessComponent<InnerProps> = ({
   anchor,

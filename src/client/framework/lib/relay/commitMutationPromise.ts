@@ -5,27 +5,26 @@ import { Omit } from "talk-framework/types";
 
 import { BadUserInputError, UnknownServerError } from "../errors";
 
-export type MutationConfigPromise<T, U> = Omit<
+/**
+ * Like `MutationConfig` but omits `onCompleted` and `onError`
+ * because we are going to use a Promise API.
+ */
+export type MutationPromiseConfig<T, U> = Omit<
   MutationConfig<T, U>,
   "onCompleted" | "onError"
 >;
 
 // Extract the payload from the response,
-// hide the clientMutationId detail.
 function getPayload(response: { [key: string]: any }): any {
   const keys = Object.keys(response);
   if (keys.length !== 1) {
     return response;
   }
-  const { clientMutationId, ...rest } = response[keys[0]];
-
-  if (clientMutationId === undefined) {
-    return response;
-  }
-
-  return rest;
+  return response[keys[0]];
 }
 
+// Extract the payload from the response,
+// hide the clientMutationId detail.
 function getError(error: Error | Error[]): Error {
   let e = error;
   if (Array.isArray(e)) {
@@ -47,9 +46,15 @@ function getError(error: Error | Error[]): Error {
   return err;
 }
 
+/**
+ * Normalizes response and error from `commitMutationPromise`.
+ * Meaning `response` will directly contain the payload
+ * and errors are wrapped inside of application specific
+ * error instances.
+ */
 export async function commitMutationPromiseNormalized<R, V>(
   environment: Environment,
-  config: MutationConfigPromise<R, V>
+  config: MutationPromiseConfig<R, V>
 ): Promise<R> {
   try {
     const response = await commitMutationPromise(environment, config);
@@ -59,9 +64,12 @@ export async function commitMutationPromiseNormalized<R, V>(
   }
 }
 
+/**
+ * Like `commitMutation` of the Relay API but returns a Promise.
+ */
 export function commitMutationPromise<R, V>(
   environment: Environment,
-  config: MutationConfigPromise<R, V>
+  config: MutationPromiseConfig<R, V>
 ): Promise<R> {
   return new Promise((resolve, reject) => {
     commitMutation(environment, {

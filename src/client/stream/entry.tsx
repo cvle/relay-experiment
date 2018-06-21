@@ -12,11 +12,13 @@ import { initLocalState } from "./local";
 import localesData from "./locales";
 import AppQuery from "./queries/AppQuery";
 
+// This is called when the context is first initialized.
 async function init({ relayEnvironment }: TalkContext) {
   await initLocalState(relayEnvironment);
 }
 
 async function main() {
+  // Bootstrap our context.
   const context = await createContext({
     init,
     localesData,

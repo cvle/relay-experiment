@@ -1,61 +1,39 @@
 import { noop } from "lodash";
-import {
-  Environment,
-  FetchFunction,
-  Network,
-  RecordSource,
-  Store
-} from "relay-runtime";
+import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
 import { NetworkError } from "../errors";
 import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
+import { fetchQuery } from "../network";
 import { TalkContext } from "./TalkContext";
 
-const fetchQuery: FetchFunction = (operation, variables) => {
-  return fetch(
-    `${window.location.protocol}//${window.location.hostname}:3000/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        query: operation.text,
-        variables
-      })
-    }
-  )
-    .then(response => {
-      return response.json();
-    })
-    .catch(err => {
-      if (err instanceof TypeError) {
-        // Network error, e.g. offline.
-        throw new NetworkError("TypeError", err.message);
-      }
-      // Unknown error.
-      throw new NetworkError("Unknown", err);
-    });
-};
-
 interface CreateContextArguments {
-  source?: RecordSource;
+  // Locales that the user accepts, usually `navigator.languages`.
   userLocales: ReadonlyArray<string>;
+
+  // Locales data that is returned by our `locales-loader`.
   localesData: LocalesData;
+
+  // Init will be called after the context has been created.
   init?: ((context: TalkContext) => void | Promise<void>);
 }
 
+/**
+ * `createContext` manages the dependencies of our framework
+ * and returns a `TalkContext` that can be passed to the
+ * `TalkContextProvider`.
+ */
 export default async function createContext({
-  source = new RecordSource(),
   init = noop,
   userLocales,
   localesData
 }: CreateContextArguments): Promise<TalkContext> {
+  // Initialize Relay.
   const relayEnvironment = new Environment({
     network: Network.create(fetchQuery),
-    store: new Store(source)
+    store: new Store(new RecordSource())
   });
 
+  // Initialize i18n.
   const locales = negotiateLanguages(userLocales, localesData);
 
   if (process.env.NODE_ENV !== "production") {
@@ -65,11 +43,13 @@ export default async function createContext({
 
   const localeMessages = await generateMessages(locales, localesData);
 
+  // Assemble context.
   const context = {
     relayEnvironment,
     localeMessages
   };
 
+  // Run custom initializations.
   await init(context);
 
   return context;

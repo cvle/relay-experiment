@@ -5,6 +5,10 @@ import {
 } from "react-relay";
 import { InferableComponentEnhancerWithProps } from "recompose";
 
+/**
+ * withRefetchContainer is a curried version of `createRefetchContainers`
+ * from Relay.
+ */
 export default <T>(
   fragmentSpec: GraphQLTaggedNode,
   refetchQuery: GraphQLTaggedNode

@@ -8,6 +8,22 @@ interface Props {
   relayEnvironment: Environment;
 }
 
+/**
+ * The Root Record of Client-Side Schema Extension must be of this type.
+ */
+export const LOCAL_TYPE = "Local";
+
+/**
+ * The Root Record of Client-Side Schema Extension must have this id.
+ */
+export const LOCAL_ID = "client:root.local";
+
+/**
+ * withLocalStateContainer allows for subscribing to local state
+ * that has been added using Client-Side Schema Extensions.
+ * The `fragmentSpec` must be a `Fragment` on the `LOCAL_TYPE` which
+ * must have the `LOCAL_ID`.
+ */
 function withLocalStateContainer<T>(
   fragmentSpec: any
 ): InferableComponentEnhancer<{ local: T }> {
@@ -21,13 +37,13 @@ function withLocalStateContainer<T>(
           if (fragment.kind !== "Fragment") {
             throw new Error("Expected fragment");
           }
-          if (fragment.type !== "Local") {
+          if (fragment.type !== LOCAL_TYPE) {
             throw new Error(
               `Type must be "Local" in "Fragment ${fragment.name}"`
             );
           }
           const selector: CSelector<any> = {
-            dataID: "client:root.local",
+            dataID: LOCAL_ID,
             node: { selections: fragment.selections },
             variables: {}
           };
@@ -52,7 +68,4 @@ function withLocalStateContainer<T>(
   );
 }
 
-/**
- * createMutationContainer
- */
 export default withLocalStateContainer;

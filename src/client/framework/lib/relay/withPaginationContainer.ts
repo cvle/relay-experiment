@@ -6,6 +6,10 @@ import {
 } from "react-relay";
 import { InferableComponentEnhancerWithProps } from "recompose";
 
+/**
+ * withPaginationContainer is a curried version of `createPaginationContainers`
+ * from Relay.
+ */
 export default <T, InnerProps>(
   fragmentSpec: GraphQLTaggedNode,
   connectionConfig: ConnectionConfig<InnerProps>
