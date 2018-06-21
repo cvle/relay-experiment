@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, StatelessComponent } from "react";
 import { compose } from "recompose";
 
 import { withKeyboardFocus, withStyles } from "talk-ui/hocs";
-import { Overwrite } from "talk-ui/types";
+import { Omot, Overwrite } from "talk-ui/types";
 
 import * as styles from "./BaseButton.css";
 
@@ -21,8 +21,8 @@ interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export type BaseButtonProps = Overwrite<
-  InnerProps,
-  Partial<Pick<InnerProps, "classes" | "keyboardFocus">>
+  Omit<InnerProps, "keyboardFocus">,
+  Partial<Pick<InnerProps, "classes">>
 >;
 
 /**
@@ -34,11 +34,22 @@ const BaseButton: StatelessComponent<InnerProps> = ({
   className,
   classes,
   keyboardFocus,
+  type: typeProp,
   ...rest
 }) => {
   let Element = "button";
   if (anchor) {
     Element = "a";
+  }
+
+  let type = typeProp;
+  if (anchor && type) {
+    console.warn(
+      "BaseButton used as anchor does not support the `type` property"
+    );
+  } else if (type === undefined) {
+    // Default to button
+    type = "button";
   }
 
   const rootClassName = cn(classes.root, className, {

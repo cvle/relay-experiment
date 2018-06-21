@@ -6,7 +6,7 @@ import { ComponentType, StatelessComponent } from "react";
 import { withStyles } from "talk-ui/hocs";
 import { Overwrite } from "talk-ui/types";
 
-import BaseButton, { BaseButtonProps } from "../BaseButton";
+import BaseButton, { BaseButtonProps } from "../BaseButton/index.ts";
 import * as styles from "./Button.css";
 
 interface InnerProps extends BaseButtonProps {
