@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { QueryRenderer } from "react-relay";
-import {
-  CacheConfig,
-  Environment,
-  GraphQLTaggedNode,
-  RerunParam
-} from "relay-runtime";
+import { CacheConfig, GraphQLTaggedNode, RerunParam } from "relay-runtime";
 
 import { TalkContextConsumer } from "../bootstrap/TalkContext";
 

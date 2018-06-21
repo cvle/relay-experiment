@@ -1,7 +1,7 @@
 export default class NetworkError extends Error {
   public type: string;
 
-  constructor(type, ...params) {
+  constructor(type: string, ...params: any[]) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
     super(...params);
 

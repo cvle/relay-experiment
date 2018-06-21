@@ -1,4 +1,4 @@
-import { commitLocalUpdate, Environment, RecordProxy } from "relay-runtime";
+import { commitLocalUpdate, Environment } from "relay-runtime";
 
 import { createMutationContainer } from "talk-framework/lib/relay";
 

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import * as React from "react";
-import { ComponentType, ReactNode, StatelessComponent } from "react";
+import { ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
 import { ReturnPropTypes } from "talk-ui/types";

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { compose, hoistStatics, InferableComponentEnhancer } from "recompose";
-import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import { Environment } from "relay-runtime";
 
 import { withContext } from "../bootstrap";
 

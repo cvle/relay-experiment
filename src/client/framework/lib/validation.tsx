@@ -1,6 +1,3 @@
-import { Localized } from "fluent-react/compat";
-import * as React from "react";
-
 import { VALIDATION_REQUIRED } from "./messages";
 
 /**

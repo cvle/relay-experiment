@@ -1,7 +1,6 @@
 import cn from "classnames";
 import { pick } from "lodash";
 import * as React from "react";
-import { ComponentType, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
 import { ReturnPropTypes } from "talk-ui/types";

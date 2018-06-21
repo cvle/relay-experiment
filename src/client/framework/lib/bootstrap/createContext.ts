@@ -1,11 +1,17 @@
 import { noop } from "lodash";
-import { Environment, Network, RecordSource, Store } from "relay-runtime";
+import {
+  Environment,
+  FetchFunction,
+  Network,
+  RecordSource,
+  Store
+} from "relay-runtime";
 
 import { NetworkError } from "../errors";
 import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
 import { TalkContext } from "./TalkContext";
 
-function fetchQuery(operation, variables) {
+const fetchQuery: FetchFunction = (operation, variables) => {
   return fetch(
     `${window.location.protocol}//${window.location.hostname}:3000/graphql`,
     {
@@ -30,7 +36,7 @@ function fetchQuery(operation, variables) {
       // Unknown error.
       throw new NetworkError("Unknown", err);
     });
-}
+};
 
 interface CreateContextArguments {
   source?: RecordSource;

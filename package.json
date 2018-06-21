@@ -77,5 +77,7 @@
     "watch:server": "nodemon --config .nodemon.server.json",
     "compile:relay:stream": "NODE_PATH=./vendor ./vendor/relay-compiler/bin/relay-compiler --src ./src/client/stream --schema src/schema.graphql --language typescript --artifactDirectory ./src/client/stream/__generated__ --no-watchman"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/react-dom": "^16.0.6"
+  }
 }

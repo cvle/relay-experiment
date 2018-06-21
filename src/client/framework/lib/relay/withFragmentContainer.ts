@@ -1,9 +1,5 @@
 import { createFragmentContainer, GraphQLTaggedNode } from "react-relay";
-import {
-  compose,
-  hoistStatics,
-  InferableComponentEnhancerWithProps
-} from "recompose";
+import { InferableComponentEnhancerWithProps } from "recompose";
 
 export default <T>(
   fragmentSpec: GraphQLTaggedNode

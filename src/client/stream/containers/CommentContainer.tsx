@@ -1,6 +1,5 @@
 import React, { StatelessComponent } from "react";
 import { graphql } from "react-relay";
-import { compose, flattenProp } from "recompose";
 
 import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
 import { Omit, ReturnPropTypes } from "talk-framework/types";

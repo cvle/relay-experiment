@@ -1,5 +1,5 @@
 import { graphql } from "react-relay";
-import { ConnectionHandler, Environment } from "relay-runtime";
+import { Environment } from "relay-runtime";
 
 import {
   commitMutationPromiseNormalized,

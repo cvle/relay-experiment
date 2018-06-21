@@ -3,7 +3,6 @@ import * as React from "react";
 import { StatelessComponent } from "react";
 
 import { Typography } from "talk-ui/components";
-import { withStyles } from "talk-ui/hocs";
 
 import * as styles from "./Comment.css";
 

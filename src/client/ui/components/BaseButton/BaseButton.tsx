@@ -1,5 +1,5 @@
 import cn from "classnames";
-import React, { ComponentType } from "react";
+import React from "react";
 import { ButtonHTMLAttributes, StatelessComponent } from "react";
 
 import { withKeyboardFocus, withStyles } from "talk-ui/hocs";

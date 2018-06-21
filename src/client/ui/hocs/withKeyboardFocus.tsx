@@ -1,6 +1,6 @@
 import * as React from "react";
-import { FocusEvent, HTMLAttributes, MouseEvent } from "react";
-import { ComponentEnhancer, hoistStatics } from "recompose";
+import { FocusEvent, MouseEvent } from "react";
+import { hoistStatics } from "recompose";
 
 interface InjectedProps {
   onFocus?: React.EventHandler<FocusEvent<any>>;

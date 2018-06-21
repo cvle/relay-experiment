@@ -12,7 +12,7 @@ export type MutationConfigPromise<T, U> = Omit<
 
 // Extract the payload from the response,
 // hide the clientMutationId detail.
-function getPayload(response): any {
+function getPayload(response: { [key: string]: any }): any {
   const keys = Object.keys(response);
   if (keys.length !== 1) {
     return response;

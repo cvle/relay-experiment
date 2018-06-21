@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { graphql } from "react-relay";
-import { compose, mapProps } from "recompose";
 
 import { BadUserInputError } from "talk-framework/lib/errors";
-import { OnSubmit } from "talk-framework/lib/form";
 import { ReturnPropTypes } from "talk-framework/types";
 
 import PostCommentForm, {
@@ -25,6 +22,7 @@ class PostCommentFormContainer extends Component<InnerProps> {
         return error.invalidArgsLocalized;
       }
     }
+    return undefined;
   };
   public render() {
     return <PostCommentForm onSubmit={this.onSubmit} />;

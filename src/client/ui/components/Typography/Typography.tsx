@@ -1,12 +1,7 @@
 import cn from "classnames";
 import { capitalize } from "lodash";
 import * as React from "react";
-import {
-  ComponentType,
-  HTMLAttributes,
-  ReactNode,
-  StatelessComponent
-} from "react";
+import { HTMLAttributes, ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
 import { ReturnPropTypes } from "talk-ui/types";

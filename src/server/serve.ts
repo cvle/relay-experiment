@@ -1,4 +1,4 @@
-import { BadUserInputError, gql } from "apollo-server";
+import { gql } from "apollo-server";
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import fs from "fs";
@@ -33,7 +33,7 @@ const resolvers = {
     ]
   },
   Mutation: {
-    postComment: (_, { input: { body, clientMutationId } }) => ({
+    postComment: (_: void, { input: { body, clientMutationId } }: any) => ({
       comment: { id: uuid(), author: "You", body },
       clientMutationId
     })
@@ -44,5 +44,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
 app.listen(APP_PORT, APP_HOST, () => {
+  // tslint:disable:next-line: no-console
   console.log(`🚀 Server ready at ${APP_HOST}:${APP_PORT}`);
 });

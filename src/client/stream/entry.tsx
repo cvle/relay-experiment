@@ -1,19 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { StatelessComponent } from "react";
-import * as ReactDOM from "react-dom";
+import ReactDOM from "react-dom";
 
 import {
   createContext,
   TalkContext,
   TalkContextProvider
 } from "talk-framework/lib/bootstrap";
-import { graphql, QueryRenderer } from "talk-framework/lib/relay";
 
 import { initLocalState } from "./local";
 import localesData from "./locales";
 import AppQuery from "./queries/AppQuery";
 
-async function init({ relayEnvironment }) {
+async function init({ relayEnvironment }: TalkContext) {
   await initLocalState(relayEnvironment);
 }
 
