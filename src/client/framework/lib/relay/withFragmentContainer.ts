@@ -3,6 +3,6 @@ import { InferableComponentEnhancerWithProps } from "recompose";
 
 export default <T>(
   fragmentSpec: GraphQLTaggedNode
-): InferableComponentEnhancerWithProps<{ data: T }, { data: any }> => (
+): InferableComponentEnhancerWithProps<T, { [P in keyof T]: any }> => (
   component: React.ComponentType<any>
-) => createFragmentContainer<T>(component, fragmentSpec) as any;
+) => createFragmentContainer(component, fragmentSpec) as any;

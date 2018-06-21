@@ -1,12 +1,22 @@
 import cn from "classnames";
-import { capitalize } from "lodash";
-import * as React from "react";
+import React from "react";
 import { HTMLAttributes, ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
 import { ReturnPropTypes } from "talk-ui/types";
 
 import * as styles from "./Typography.css";
+
+type Variant =
+  | "heading1"
+  | "heading2"
+  | "heading3"
+  | "heading4"
+  | "subtitle1"
+  | "subtitle2"
+  | "body1"
+  | "body2"
+  | "button";
 
 // Based on Typography Component of Material UI.
 // https://github.com/mui-org/material-ui/blob/303199d39b42a321d28347d8440d69166f872f27/packages/material-ui/src/Typography/Typography.js
@@ -43,7 +53,7 @@ interface InnerProps extends HTMLAttributes<any> {
    * Either a string to use a DOM element or a component.
    * By default, it maps the variant to a good default headline component.
    */
-  component?: React.ComponentType<any>;
+  component?: React.ComponentType<any> | string;
   /**
    * If `true`, the text will have a bottom margin.
    */
@@ -53,7 +63,7 @@ interface InnerProps extends HTMLAttributes<any> {
    * For instance, h1 to h6. If you wish to change that mapping, you can provide your own.
    * Alternatively, you can use the `component` property.
    */
-  headlineMapping?: object;
+  headlineMapping?: { [P in Variant]?: React.ComponentType<any> | string };
   /**
    * If `true`, the text will not wrap, but instead will truncate with an ellipsis.
    */
@@ -65,17 +75,7 @@ interface InnerProps extends HTMLAttributes<any> {
   /**
    * Applies the theme typography styles.
    */
-  variant?:
-    | "heading1"
-    | "heading2"
-    | "heading3"
-    | "heading4"
-    | "subtitle1"
-    | "subtitle2"
-    | "body1"
-    | "body2"
-    | "caption"
-    | "button";
+  variant?: Variant;
 }
 
 const Typography: StatelessComponent<InnerProps> = props => {
@@ -97,11 +97,15 @@ const Typography: StatelessComponent<InnerProps> = props => {
     classes.root,
     classes[variant],
     {
-      [classes[`color${capitalize(color)}`]]: color !== "default",
+      [classes.colorPrimary]: color === "primary",
+      [classes.colorSecondary]: color === "secondary",
       [classes.noWrap]: noWrap,
       [classes.gutterBottom]: gutterBottom,
       [classes.paragraph]: paragraph,
-      [classes[`align${capitalize(align)}`]]: align !== "inherit"
+      [classes.alignLeft]: align === "left",
+      [classes.alignCenter]: align === "center",
+      [classes.alignRight]: align === "right",
+      [classes.alignJustify]: align === "justify"
     },
     className
   );

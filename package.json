@@ -44,7 +44,6 @@
     "react-dom": "^16.4.0",
     "react-final-form": "^3.6.0",
     "recompose": "^0.27.1",
-    "relay-compiler-language-typescript": "^0.9.0",
     "string-replace-loader": "^2.1.1",
     "style-loader": "^0.21.0",
     "ts-loader": "^4.3.1",

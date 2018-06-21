@@ -1,9 +1,16 @@
-import { createPaginationContainer } from "react-relay";
-import { GraphQLTaggedNode } from "react-relay";
+import {
+  ConnectionConfig,
+  createPaginationContainer,
+  GraphQLTaggedNode,
+  RelayPaginationProp
+} from "react-relay";
+import { InferableComponentEnhancerWithProps } from "recompose";
 
-// TODO: Add types.
-export default (
+export default <T, InnerProps>(
   fragmentSpec: GraphQLTaggedNode,
-  connectionConfig
-) => component =>
-  createPaginationContainer(component, fragmentSpec, connectionConfig);
+  connectionConfig: ConnectionConfig<InnerProps>
+): InferableComponentEnhancerWithProps<
+  T & { relay: RelayPaginationProp },
+  { [P in keyof T]: any }
+> => (component: React.ComponentType<any>) =>
+  createPaginationContainer(component, fragmentSpec, connectionConfig) as any;

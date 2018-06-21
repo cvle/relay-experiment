@@ -1,6 +1,15 @@
-import { createRefetchContainer } from "react-relay";
-import { GraphQLTaggedNode } from "react-relay";
+import {
+  createRefetchContainer,
+  GraphQLTaggedNode,
+  RelayRefetchProp
+} from "react-relay";
+import { InferableComponentEnhancerWithProps } from "recompose";
 
-// TODO: Add types.
-export default (fragmentSpec: GraphQLTaggedNode, refetchQuery) => component =>
-  createRefetchContainer(component, fragmentSpec, refetchQuery);
+export default <T>(
+  fragmentSpec: GraphQLTaggedNode,
+  refetchQuery: GraphQLTaggedNode
+): InferableComponentEnhancerWithProps<
+  T & { relay: RelayRefetchProp },
+  { [P in keyof T]: any }
+> => (component: React.ComponentType<any>) =>
+  createRefetchContainer(component, fragmentSpec, refetchQuery) as any;

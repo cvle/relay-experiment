@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
 import { VALIDATION_REQUIRED } from "./messages";
+
+type Validator<T, V> = (v: T, values: V) => ReactNode;
 
 /**
  * createNotificationService returns a notification services based on pym.
@@ -6,7 +9,10 @@ import { VALIDATION_REQUIRED } from "./messages";
  * @param  {error}   string      error that is displayed when validation fails.
  * @return {func}    validator function
  */
-export function createValidator(condition, error) {
+export function createValidator<T = any, V = any>(
+  condition: (v: T, values: V) => boolean,
+  error: ReactNode
+): Validator<T, V> {
   return (v, values) => (condition(v, values) ? undefined : error);
 }
 
@@ -16,10 +22,12 @@ export function createValidator(condition, error) {
  * @param  {func[]}  validators         array of validator functions.
  * @return {func}    validator fuction
  */
-export function composeValidators(...validators) {
-  return value =>
+export function composeValidators<T = any, V = any>(
+  ...validators: Array<Validator<T, V>>
+) {
+  return (v: T, values: V) =>
     validators.reduce(
-      (error, validator) => error || validator(value),
+      (error, validator) => error || validator(v, values),
       undefined
     );
 }

@@ -1,6 +1,6 @@
 import { LocalizationProvider } from "fluent-react/compat";
 import { MessageContext } from "fluent/compat";
-import * as React from "react";
+import React, { StatelessComponent } from "react";
 import { Environment } from "relay-runtime";
 
 export interface TalkContext {
@@ -12,7 +12,9 @@ const { Provider, Consumer } = React.createContext<TalkContext>({} as any);
 
 export const TalkContextConsumer = Consumer;
 
-export const TalkContextProvider = ({ value, children }) => (
+export const TalkContextProvider: StatelessComponent<{
+  value: TalkContext;
+}> = ({ value, children }) => (
   <Provider value={value}>
     <LocalizationProvider messages={value.localeMessages}>
       {children}

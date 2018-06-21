@@ -33,7 +33,7 @@ function getError(error: Error | Error[]): Error {
       // tslint:disable-next-line: no-console
       console.error(`Unexpected Error array length, should be 1`, error);
     }
-    e = error[0];
+    e = e[0];
   }
 
   let err = e as Error;

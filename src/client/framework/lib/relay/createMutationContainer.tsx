@@ -12,7 +12,7 @@ function createMutationContainer<T extends string, I, R>(
     withContext(({ relayEnvironment }) => ({ relayEnvironment })),
     hoistStatics((WrappedComponent: React.ComponentType<any>) => {
       class CreateMutationContainer extends React.Component<any> {
-        private commit = input => {
+        private commit = (input: I) => {
           return commit(this.props.relayEnvironment, input);
         };
 
