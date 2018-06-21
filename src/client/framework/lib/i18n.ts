@@ -42,15 +42,15 @@ export function negotiateLanguages(
 }
 
 // Don't warn in production.
-let decorateWarnMissing = cx => cx;
+let decorateWarnMissing = (cx: MessageContext) => cx;
 
 // Warn about missing locales if we are not in production.
 if (process.env.NODE_ENV !== "production") {
   decorateWarnMissing = (() => {
     const warnings: string[] = [];
-    return cx => {
+    return (cx: MessageContext) => {
       const original = cx.hasMessage;
-      cx.hasMessage = id => {
+      cx.hasMessage = (id: string) => {
         const result = original.apply(cx, [id]);
         if (!result) {
           const warn = `${cx.locales} translation for key "${id}" not found`;

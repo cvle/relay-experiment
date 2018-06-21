@@ -29,7 +29,7 @@ const enhanced = withLocalStateContainer<Local>(
     }
   `
 )(
-  withFragmentContainer<Data>(
+  withFragmentContainer<{ data: Data }>(
     graphql`
       fragment AppContainer on Query {
         comments {
