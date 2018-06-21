@@ -3,7 +3,7 @@ import { Environment, MutationConfig } from "relay-runtime";
 
 import { Omit } from "talk-framework/types";
 
-import { BadUserInputError } from "../errors";
+import { BadUserInputError, UnknownServerError } from "../errors";
 
 export type MutationConfigPromise<T, U> = Omit<
   MutationConfig<T, U>,
@@ -12,7 +12,7 @@ export type MutationConfigPromise<T, U> = Omit<
 
 // Extract the payload from the response,
 // hide the clientMutationId detail.
-function getPayload(response) {
+function getPayload(response): any {
   const keys = Object.keys(response);
   if (keys.length !== 1) {
     return response;
@@ -26,22 +26,25 @@ function getPayload(response) {
   return rest;
 }
 
-function getError(error) {
+function getError(error: Error | Error[]): Error {
   let e = error;
-  if (Array.isArray(error)) {
+  if (Array.isArray(e)) {
     if (e.length > 1) {
       // tslint:disable-next-line: no-console
       console.error(`Unexpected Error array length, should be 1`, error);
     }
     e = error[0];
   }
-  if (e.extensions) {
-    e = e.extensions;
+
+  let err = e as Error;
+  if ((err as any).extensions) {
+    if ((err as any).code === "BAD_USER_INPUT") {
+      err = new BadUserInputError((err as any).extensions);
+    } else {
+      err = new UnknownServerError(err.message, (err as any).extensions);
+    }
   }
-  if (e.code === "BAD_USER_INPUT") {
-    e = new BadUserInputError(e);
-  }
-  return e;
+  return err;
 }
 
 export async function commitMutationPromiseNormalized<R, V>(

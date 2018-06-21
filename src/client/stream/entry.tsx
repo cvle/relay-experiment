@@ -13,8 +13,8 @@ import { initLocalState } from "./local";
 import localesData from "./locales";
 import AppQuery from "./queries/AppQuery";
 
-function init({ relayEnvironment }) {
-  return initLocalState(relayEnvironment);
+async function init({ relayEnvironment }) {
+  await initLocalState(relayEnvironment);
 }
 
 async function main() {

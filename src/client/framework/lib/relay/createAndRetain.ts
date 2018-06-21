@@ -5,7 +5,7 @@ export default function createAndRetain(
   source: RecordSourceProxy,
   id: string,
   type: string
-) {
+): RecordProxy {
   const result = source.create(id, type);
   environment.retain({
     dataID: id,

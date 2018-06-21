@@ -36,7 +36,7 @@ interface CreateContextArguments {
   source?: RecordSource;
   userLocales: ReadonlyArray<string>;
   localesData: LocalesData;
-  init?: ((context: TalkContext) => void);
+  init?: ((context: TalkContext) => void | Promise<void>);
 }
 
 export default async function createContext({
@@ -52,7 +52,10 @@ export default async function createContext({
 
   const locales = negotiateLanguages(userLocales, localesData);
 
-  console.log(`Negotiated locales ${JSON.stringify(locales)}`);
+  if (process.env.NODE_ENV !== "production") {
+    // tslint:disable:next-line: no-console
+    console.log(`Negotiated locales ${JSON.stringify(locales)}`);
+  }
 
   const localeMessages = await generateMessages(locales, localesData);
 
