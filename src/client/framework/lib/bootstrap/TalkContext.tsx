@@ -1,11 +1,11 @@
 import { LocalizationProvider } from "fluent-react/compat";
+import { MessageContext } from "fluent/compat";
 import * as React from "react";
 import { Environment } from "relay-runtime";
 
 export interface TalkContext {
   relayEnvironment: Environment;
-  // TODO: need fluent types.
-  localeMessages: any;
+  localeMessages: MessageContext[];
 }
 
 const { Provider, Consumer } = React.createContext<TalkContext>({} as any);

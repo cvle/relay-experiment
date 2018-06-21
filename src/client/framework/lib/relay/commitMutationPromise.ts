@@ -44,7 +44,7 @@ function getError(error) {
   return e;
 }
 
-export async function commitMutationPromiseNormalized<R = any, V = any>(
+export async function commitMutationPromiseNormalized<R, V>(
   environment: Environment,
   config: MutationConfigPromise<R, V>
 ): Promise<R> {
@@ -56,7 +56,7 @@ export async function commitMutationPromiseNormalized<R = any, V = any>(
   }
 }
 
-export function commitMutationPromise<R = any, V = any>(
+export function commitMutationPromise<R, V>(
   environment: Environment,
   config: MutationConfigPromise<R, V>
 ): Promise<R> {

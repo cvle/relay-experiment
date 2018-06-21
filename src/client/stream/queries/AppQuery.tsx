@@ -2,11 +2,15 @@ import * as React from "react";
 import { StatelessComponent } from "react";
 
 import { graphql, QueryRenderer } from "talk-framework/lib/relay";
+import {
+  AppQueryResponse,
+  AppQueryVariables
+} from "talk-stream/__generated__/AppQuery.graphql";
 
 import AppContainer from "../containers/AppContainer";
 
 const AppQuery: StatelessComponent = () => (
-  <QueryRenderer
+  <QueryRenderer<AppQueryVariables, AppQueryResponse>
     query={graphql`
       query AppQuery {
         ...AppContainer

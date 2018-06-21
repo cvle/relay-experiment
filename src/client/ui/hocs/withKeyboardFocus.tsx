@@ -22,7 +22,7 @@ export default hoistStatics<InjectedProps>(
         lastMouseDownTime: 0
       };
 
-      public handleFocus: React.EventHandler<FocusEvent<any>> = event => {
+      private handleFocus: React.EventHandler<FocusEvent<any>> = event => {
         if (this.props.onFocus) {
           this.props.onFocus(event);
         }
@@ -32,14 +32,14 @@ export default hoistStatics<InjectedProps>(
         }
       };
 
-      public handleBlur: React.EventHandler<FocusEvent<any>> = event => {
+      private handleBlur: React.EventHandler<FocusEvent<any>> = event => {
         if (this.props.onBlur) {
           this.props.onBlur(event);
         }
         this.setState({ keyboardFocus: false });
       };
 
-      public handleMouseDown: React.EventHandler<MouseEvent<any>> = event => {
+      private handleMouseDown: React.EventHandler<MouseEvent<any>> = event => {
         if (this.props.onMouseDown) {
           this.props.onMouseDown(event);
         }

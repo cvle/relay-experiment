@@ -41,30 +41,36 @@ export function negotiateLanguages(
   return languages;
 }
 
-// TODO: should only be used in development.
-const decorateWarnMissing = (() => {
-  const warnings: string[] = [];
-  return cx => {
-    const original = cx.hasMessage;
-    cx.hasMessage = id => {
-      const result = original.apply(cx, [id]);
-      if (!result) {
-        const warn = `${cx.locales} translation for key "${id}" not found`;
-        if (!warnings.includes(warn)) {
-          console.warn(warn);
-          warnings.push(warn);
+// Don't warn in production.
+let decorateWarnMissing = cx => cx;
+
+// Warn about missing locales if we are not in production.
+if (process.env.NODE_ENV !== "production") {
+  decorateWarnMissing = (() => {
+    const warnings: string[] = [];
+    return cx => {
+      const original = cx.hasMessage;
+      cx.hasMessage = id => {
+        const result = original.apply(cx, [id]);
+        if (!result) {
+          const warn = `${cx.locales} translation for key "${id}" not found`;
+          if (!warnings.includes(warn)) {
+            // tslint:disable:next-line: no-console
+            console.warn(warn);
+            warnings.push(warn);
+          }
         }
-      }
-      return result;
+        return result;
+      };
+      return cx;
     };
-    return cx;
-  };
-})();
+  })();
+}
 
 export async function generateMessages(
   locales: ReadonlyArray<string>,
   data: LocalesData
-) {
+): Promise<MessageContext[]> {
   const promises = [];
 
   for (const locale of locales) {
