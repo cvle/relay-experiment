@@ -1,6 +1,6 @@
 import {
   DefaultingInferableComponentEnhancer,
-  withPropsOnChange
+  withPropsOnChange,
 } from "recompose";
 
 /**

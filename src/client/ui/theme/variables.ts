@@ -11,7 +11,7 @@ const variables = {
       dark: "#2B7EB5",
       main: "#3498DB",
       light: "#67B2E4",
-      lighter: "#8DC5EB"
+      lighter: "#8DC5EB",
     },
     /* Secondary colors */
     secondary: {
@@ -19,7 +19,7 @@ const variables = {
       dark: "#65696B",
       main: "#787D80",
       light: "#9A9DA0",
-      lighter: "#636E72"
+      lighter: "#636E72",
     },
     /* Success colors */
     success: {
@@ -27,7 +27,7 @@ const variables = {
       dark: "#02BD6B",
       main: "#00CD73",
       light: "#40D996",
-      lighter: "#83EBBD"
+      lighter: "#83EBBD",
     },
     /* Error colors */
     error: {
@@ -35,27 +35,27 @@ const variables = {
       dark: "#FF1F1C",
       main: "#FA4643",
       light: "#F26563",
-      lighter: "#F26563"
+      lighter: "#F26563",
     },
     /* Text colors */
     text: {
       primary: "#3B4A53",
       secondary: "#787D80",
       disabled: "rgba(0, 0, 0, 0.38)",
-      hint: "rgba(0, 0, 0, 0.38)"
+      hint: "rgba(0, 0, 0, 0.38)",
     },
     /* Common colors */
     common: {
       white: "#FFF",
-      black: "#000"
+      black: "#000",
     },
     /* Divider */
     divider: "rgba(0, 0, 0, 0.12)",
     /* The background colors used to style the surfaces. */
     background: {
       paper: "#FFF",
-      default: "#FAFAFA"
-    }
+      default: "#FAFAFA",
+    },
   },
   /* gitter and spacing */
   spacingUnit: 5,
@@ -67,7 +67,7 @@ const variables = {
   fontSize: 16,
   fontWeightLight: 300,
   fontWeightRegular: 400,
-  fontWeightMedium: 550
+  fontWeightMedium: 550,
 };
 
 module.exports = variables;

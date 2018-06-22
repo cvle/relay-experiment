@@ -15,7 +15,7 @@ export interface CommentProps {
 
 const Comment: StatelessComponent<CommentProps> = props => {
   const rootClassName = cn(styles.root, props.className, {
-    [styles.gutterBottom]: props.gutterBottom
+    [styles.gutterBottom]: props.gutterBottom,
   });
   return (
     <div className={rootClassName}>

@@ -17,7 +17,7 @@ export default function createAndRetain(
   environment.retain({
     dataID: id,
     node: { selections: [] },
-    variables: {}
+    variables: {},
   });
   return result;
 }

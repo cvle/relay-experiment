@@ -37,7 +37,7 @@ interface BadUserInputExtension {
  */
 const validationMap = {
   TOO_SHORT: VALIDATION_TOO_SHORT,
-  REQUIRED: VALIDATION_REQUIRED
+  REQUIRED: VALIDATION_REQUIRED,
 };
 
 /**

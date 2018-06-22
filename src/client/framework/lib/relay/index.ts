@@ -9,6 +9,6 @@ export { default as createMutationContainer } from "./createMutationContainer";
 export { default as createAndRetain } from "./createAndRetain";
 export {
   commitMutationPromise,
-  commitMutationPromiseNormalized
+  commitMutationPromiseNormalized,
 } from "./commitMutationPromise";
 export { graphql } from "react-relay";

@@ -105,7 +105,7 @@ const Typography: StatelessComponent<InnerProps> = props => {
       [classes.alignLeft]: align === "left",
       [classes.alignCenter]: align === "center",
       [classes.alignRight]: align === "right",
-      [classes.alignJustify]: align === "justify"
+      [classes.alignJustify]: align === "justify",
     },
     className
   );
@@ -128,11 +128,11 @@ Typography.defaultProps = {
     subtitle1: "h2",
     subtitle2: "h3",
     body1: "p",
-    body2: "aside"
+    body2: "aside",
   },
   noWrap: false,
   paragraph: false,
-  variant: "body1"
+  variant: "body1",
 };
 
 const enhanced = withStyles(styles)(Typography);

@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import {
   createContext,
   TalkContext,
-  TalkContextProvider
+  TalkContextProvider,
 } from "talk-framework/lib/bootstrap";
 
 import { initLocalState } from "./local";
@@ -22,7 +22,7 @@ async function main() {
   const context = await createContext({
     init,
     localesData,
-    userLocales: navigator.languages
+    userLocales: navigator.languages,
   });
 
   const Entry: StatelessComponent = () => (

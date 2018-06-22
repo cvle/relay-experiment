@@ -2,7 +2,7 @@ import {
   ConnectionConfig,
   createPaginationContainer,
   GraphQLTaggedNode,
-  RelayPaginationProp
+  RelayPaginationProp,
 } from "react-relay";
 import { InferableComponentEnhancerWithProps } from "recompose";
 

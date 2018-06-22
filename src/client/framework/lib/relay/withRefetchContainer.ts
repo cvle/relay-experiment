@@ -1,7 +1,7 @@
 import {
   createRefetchContainer,
   GraphQLTaggedNode,
-  RelayRefetchProp
+  RelayRefetchProp,
 } from "react-relay";
 import { InferableComponentEnhancerWithProps } from "recompose";
 

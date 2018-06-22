@@ -44,7 +44,7 @@ class Button extends React.Component<InnerProps> {
       [classes.invert]: invert,
       [classes.fullWidth]: fullWidth,
       [classes.primary]: primary,
-      [classes.secondary]: secondary
+      [classes.secondary]: secondary,
     });
 
     return (

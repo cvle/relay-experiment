@@ -3,12 +3,12 @@ import { Environment } from "relay-runtime";
 
 import {
   commitMutationPromiseNormalized,
-  createMutationContainer
+  createMutationContainer,
 } from "talk-framework/lib/relay";
 import { Omit } from "talk-framework/types";
 import {
   PostCommentMutationResponse,
-  PostCommentMutationVariables
+  PostCommentMutationVariables,
 } from "talk-stream/__generated__/PostCommentMutation.graphql";
 
 export type PostCommentInput = Omit<
@@ -40,8 +40,8 @@ function commit(environment: Environment, input: PostCommentInput) {
     variables: {
       input: {
         ...input,
-        clientMutationId: clientMutationId++
-      }
+        clientMutationId: clientMutationId++,
+      },
     },
     updater: store => {
       const payload = store.getRootField("postComment");
@@ -51,7 +51,7 @@ function commit(environment: Environment, input: PostCommentInput) {
         const records = root.getLinkedRecords("comments");
         root.setLinkedRecords([...records, newRecord], "comments");
       }
-    }
+    },
   });
 }
 

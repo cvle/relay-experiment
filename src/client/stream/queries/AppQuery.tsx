@@ -4,7 +4,7 @@ import { StatelessComponent } from "react";
 import { graphql, QueryRenderer, ReadyState } from "talk-framework/lib/relay";
 import {
   AppQueryResponse,
-  AppQueryVariables
+  AppQueryVariables,
 } from "talk-stream/__generated__/AppQuery.graphql";
 
 import AppContainer from "../containers/AppContainer";

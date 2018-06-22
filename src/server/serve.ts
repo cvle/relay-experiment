@@ -29,15 +29,15 @@ const resolvers = {
     comment: () => ({ id: uuid(), author: "Markus", body: "hey" }),
     comments: () => [
       { id: uuid(), author: "Markus", body: "Hey" },
-      { id: uuid(), author: "Lukas", body: "What's up?" }
-    ]
+      { id: uuid(), author: "Lukas", body: "What's up?" },
+    ],
   },
   Mutation: {
     postComment: (_: void, { input: { body, clientMutationId } }: any) => ({
       comment: { id: uuid(), author: "You", body },
-      clientMutationId
-    })
-  }
+      clientMutationId,
+    }),
+  },
 };
 
 const server = new ApolloServer({ typeDefs, resolvers });

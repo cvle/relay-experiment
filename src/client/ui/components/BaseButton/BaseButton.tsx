@@ -52,7 +52,7 @@ const BaseButton: StatelessComponent<InnerProps> = ({
   }
 
   const rootClassName = cn(classes.root, className, {
-    [classes.keyboardFocus]: keyboardFocus
+    [classes.keyboardFocus]: keyboardFocus,
   });
 
   return <Element {...rest} className={rootClassName} />;

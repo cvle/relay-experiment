@@ -83,7 +83,7 @@ export function commitMutationPromise<R, V>(
       },
       onError: error => {
         reject(error);
-      }
+      },
     });
   });
 }

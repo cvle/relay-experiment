@@ -4,7 +4,7 @@ import { BadUserInputError } from "talk-framework/lib/errors";
 import { ReturnPropTypes } from "talk-framework/types";
 
 import PostCommentForm, {
-  PostCommentFormProps
+  PostCommentFormProps,
 } from "../components/PostCommentForm";
 import { PostCommentMutation, withPostCommentMutation } from "../mutations";
 

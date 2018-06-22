@@ -3,7 +3,7 @@ import { commitLocalUpdate, Environment } from "relay-runtime";
 import {
   createAndRetain,
   LOCAL_ID,
-  LOCAL_TYPE
+  LOCAL_TYPE,
 } from "talk-framework/lib/relay";
 
 import { NETWORK_ID, NETWORK_TYPE } from "./constants";

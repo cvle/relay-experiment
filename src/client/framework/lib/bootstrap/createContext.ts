@@ -24,12 +24,12 @@ interface CreateContextArguments {
 export default async function createContext({
   init = noop,
   userLocales,
-  localesData
+  localesData,
 }: CreateContextArguments): Promise<TalkContext> {
   // Initialize Relay.
   const relayEnvironment = new Environment({
     network: Network.create(fetchQuery),
-    store: new Store(new RecordSource())
+    store: new Store(new RecordSource()),
   });
 
   // Initialize i18n.
@@ -45,7 +45,7 @@ export default async function createContext({
   // Assemble context.
   const context = {
     relayEnvironment,
-    localeMessages
+    localeMessages,
   };
 
   // Run custom initializations.

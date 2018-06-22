@@ -3,7 +3,7 @@ import { graphql } from "react-relay";
 
 import {
   withFragmentContainer,
-  withLocalStateContainer
+  withLocalStateContainer,
 } from "talk-framework/lib/relay";
 import { ReturnPropTypes } from "talk-framework/types";
 import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";

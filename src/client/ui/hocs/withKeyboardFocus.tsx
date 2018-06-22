@@ -19,7 +19,7 @@ export default hoistStatics<InjectedProps>(
     class WithKeyboardFocus extends React.Component<any> {
       public state = {
         keyboardFocus: false,
-        lastMouseDownTime: 0
+        lastMouseDownTime: 0,
       };
 
       private handleFocus: React.EventHandler<FocusEvent<any>> = event => {

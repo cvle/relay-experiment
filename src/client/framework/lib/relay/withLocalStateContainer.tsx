@@ -45,12 +45,12 @@ function withLocalStateContainer<T>(
           const selector: CSelector<any> = {
             dataID: LOCAL_ID,
             node: { selections: fragment.selections },
-            variables: {}
+            variables: {},
           };
           const snapshot = props.relayEnvironment.lookup(selector);
           props.relayEnvironment.subscribe(snapshot, this.updateSnapshot);
           this.state = {
-            data: snapshot.data
+            data: snapshot.data,
           };
         }
 

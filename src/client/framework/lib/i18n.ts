@@ -34,7 +34,7 @@ export function negotiateLanguages(
   // Choose locale that is best for the user.
   const languages = negotiate(userLocales, data.availableLocales, {
     defaultLocale: data.defaultLocale,
-    strategy: "lookup"
+    strategy: "lookup",
   });
 
   if (data.fallbackLocale && languages[0] !== data.fallbackLocale) {
