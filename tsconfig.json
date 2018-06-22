@@ -40,7 +40,7 @@
         "./src/locales/*"
       ],
       "*": [
-        "./vendor/*"
+        "./node_modules/@coral-forks/*"
       ]
     }
   },

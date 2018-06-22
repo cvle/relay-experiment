@@ -22,7 +22,7 @@ const reactPresets = process.env.NODE_ENV === "production" ? ["@babel/react" /*,
 const envPreset = ["@babel/env", { "targets": "last 2 versions, ie 11", "modules": false }];
 const babelOptions = {
   "presets": [envPreset, ...reactPresets],
-  "plugins": ["@babel/syntax-dynamic-import", [require("./vendor/babel-plugin-relay"), { "artifactDirectory": "./src/client/stream/__generated__" }]],
+  "plugins": ["@babel/syntax-dynamic-import", [require("@coral-forks/babel-plugin-relay"), { "artifactDirectory": "./src/client/stream/__generated__" }]],
 };
 
 /* i18n */
