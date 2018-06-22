@@ -1,7 +1,8 @@
 const path = require("path");
 const fs = require("fs");
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const extensions = [".ts", ".tsx", ".js"];
+
 // const stringify = require('json-stringify-safe');
 
 export default {
