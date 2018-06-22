@@ -4,6 +4,7 @@ export { default as withRefetchContainer } from "./withRefetchContainer";
 export { default as withLocalStateContainer } from "./withLocalStateContainer";
 export * from "./withLocalStateContainer";
 export { default as QueryRenderer } from "./QueryRenderer";
+export * from "./QueryRenderer";
 export { default as createMutationContainer } from "./createMutationContainer";
 export { default as createAndRetain } from "./createAndRetain";
 export {

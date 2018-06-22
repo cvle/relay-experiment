@@ -1,7 +1,6 @@
 import { noop } from "lodash";
 import { Environment, Network, RecordSource, Store } from "relay-runtime";
 
-import { NetworkError } from "../errors";
 import { generateMessages, LocalesData, negotiateLanguages } from "../i18n";
 import { fetchQuery } from "../network";
 import { TalkContext } from "./TalkContext";
