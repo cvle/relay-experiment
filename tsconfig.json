@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "esNext",
-    "jsx": "preserve",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

@@ -75,8 +75,8 @@
   "scripts": {
     "clean": "rm -rf dist",
     "docz": "docz",
-    "start": "NODE_ENV=production ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
-    "start:development": "NODE_ENV=development ts-node -O '{\"module\":\"commonjs\"}' src/server/serve.ts",
+    "start": "NODE_ENV=production ts-node src/server/serve.ts",
+    "start:development": "NODE_ENV=development ts-node src/server/serve.ts",
     "watch": "npm-run-all clean compile:relay:* --parallel watch:*",
     "watch:css": "tcm src/client/ --watch",
     "watch:client": "NODE_ENV=development webpack-dev-server --host 0.0.0.0",

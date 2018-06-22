@@ -48,6 +48,12 @@ const i18n = {
   // availableLocales: ["en-US"]
 };
 
+/* Typescript */
+const tsconfigOverwrites = {
+  target: "es2015",
+  module: "esnext",
+  jsx: "preserve",
+};
 const extensions = [".ts", ".tsx", ".js"];
 
 /* Config */
@@ -90,7 +96,10 @@ const config = {
             options: babelOptions
           },
           {
-            loader: "ts-loader"
+            loader: "ts-loader",
+            options: {
+              compilerOptions: tsconfigOverwrites,
+            },
           }
         ]
       },
