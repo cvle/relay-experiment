@@ -62,7 +62,7 @@ export type ContainerProps {
 
 const enhance = compose<InnerProps, ContainerProps>(
   withLocalStateContainer(…),
-  withFragmentContainer()
+  withFragmentContainer(…)
 );
 
 export default enhance(Container);
