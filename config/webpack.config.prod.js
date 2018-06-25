@@ -67,8 +67,8 @@ module.exports = {
   // In production, we only want to load the polyfills and the app code.
   entry: [require.resolve('./polyfills'), paths.appStreamIndex],
   output: {
-    // The build folder.
-    path: paths.appBuild,
+    // The dist folder.
+    path: paths.appDist,
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.

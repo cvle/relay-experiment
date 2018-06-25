@@ -83,7 +83,7 @@
   "scripts": {
     "docz:watch": "docz dev",
     "test": "node ./scripts/test",
-    "build": "node ./scripts/build",
+    "build": "node ./scripts/build.js",
     "serve": "NODE_ENV=production ts-node src/core/server/serve.ts",
     "serve:dev": "NODE_ENV=development ts-node src/core/server/serve.ts",
     "test": "node scripts/test.js --env=jsdom",
