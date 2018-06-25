@@ -1,8 +1,0 @@
-{
-  "exec": "npm-run-all start:development",
-  "ext": "ts,graphql",
-  "watch": [
-    "src/schema.graphql",
-    "src/server"
-  ]
-}

@@ -25,13 +25,13 @@ async function main() {
     userLocales: navigator.languages,
   });
 
-  const Entry: StatelessComponent = () => (
+  const Index: StatelessComponent = () => (
     <TalkContextProvider value={context}>
       <AppQuery />
     </TalkContextProvider>
   );
 
-  ReactDOM.render(<Entry />, document.getElementById("app"));
+  ReactDOM.render(<Index />, document.getElementById("app"));
 }
 
 main();

@@ -7,19 +7,16 @@ import { NetworkError } from "../errors";
  * required by Relay. It'll return a `NetworkError` on failure.
  */
 const fetchQuery: FetchFunction = (operation, variables) => {
-  return fetch(
-    `${window.location.protocol}//${window.location.hostname}:3000/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: operation.text,
-        variables,
-      }),
-    }
-  )
+  return fetch(`/graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: operation.text,
+      variables,
+    }),
+  })
     .then(response => {
       return response.json();
     })
