@@ -83,11 +83,10 @@
   "scripts": {
     "start:docz": "docz dev",
     "build": "node ./scripts/build",
-    "start": "NODE_ENV=development npm-run-all compile:relay:* --parallel watch:*",
     "serve": "NODE_ENV=production ts-node src/server/serve.ts",
     "serve:dev": "NODE_ENV=development ts-node src/server/serve.ts",
     "test": "node scripts/test.js --env=jsdom",
-    "watch": "npm-run-all clean compile:relay:* --parallel watch:*",
+    "watch": "NODE_ENV=development npm-run-all compile:relay:* --parallel watch:*",
     "watch:client": "node ./scripts/start.js",
     "watch:css": "tcm src/client/ --watch",
     "watch:relay:stream": "nodemon --config ./config/nodemon/relay-stream.json",
