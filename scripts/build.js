@@ -47,10 +47,10 @@ measureFileSizesBeforeBuild(paths.appBuild)
     // Remove all content but keep the directory so that
     // if you're in it, you don't end up in Trash
     fs.emptyDirSync(paths.appBuild);
-    // Ensure public folder exists.
-    fs.ensureDir(paths.appPublic);
     // Merge with the public folder
-    copyPublicFolder();
+    if (fs.pathExistsSync(paths.appPublic)) {
+      copyPublicFolder();
+    }
     // Start the webpack build
     return build(previousFileSizes);
   })

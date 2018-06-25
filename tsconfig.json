@@ -14,28 +14,21 @@
     "noImplicitAny": true,
     "lib": ["dom", "es7", "scripthost", "es2015"],
     "baseUrl": "./",
-    "plugins": [
-      {
-        "name": "ts-graphql-plugin",
-        "schema": "./src/schema.graphql",
-        "tag": "gql"
-      }
-    ],
     "paths": {
       "talk-admin/*": [
-        "./src/client/admin/*"
+        "./src/core/client/admin/*"
       ],
       "talk-stream/*": [
-        "./src/client/stream/*"
+        "./src/core/client/stream/*"
       ],
       "talk-framework/*": [
-        "./src/client/framework/*"
+        "./src/core/client/framework/*"
       ],
       "talk-ui/*": [
-        "./src/client/ui/*"
+        "./src/core/client/ui/*"
       ],
       "talk-server/*": [
-        "./src/server/*"
+        "./src/core/server/*"
       ],
       "talk-locales/*": [
         "./src/locales/*"

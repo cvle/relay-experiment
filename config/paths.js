@@ -52,14 +52,14 @@ module.exports = {
   appSrc: resolveApp('src'),
   appTsconfig: resolveApp('tsconfig.json'),
   appLocales: resolveApp('src/locales'),
-  appThemeVariables: resolveApp('src/client/ui/theme/variables.ts'),
+  appThemeVariables: resolveApp('src/core/client/ui/theme/variables.ts'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
 
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 
-  appStreamHtml: resolveApp('src/client/stream/index.html'),
-  appStreamLocalesTemplate: resolveApp('src/client/stream/locales.ts'),
-  appStreamIndex: resolveApp('src/client/stream/index.tsx'),
+  appStreamHtml: resolveApp('src/core/client/stream/index.html'),
+  appStreamLocalesTemplate: resolveApp('src/core/client/stream/locales.ts'),
+  appStreamIndex: resolveApp('src/core/client/stream/index.tsx'),
 };

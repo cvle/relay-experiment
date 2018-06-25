@@ -14,7 +14,7 @@ const app = express();
 app.use("/", express.static(path.resolve(__dirname, "../../dist")));
 
 const schema = fs.readFileSync(
-  path.join(__dirname, "../schema.graphql"),
+	path.join(__dirname, "../../schema.graphql"),
   "utf8"
 );
 

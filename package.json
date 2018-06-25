@@ -81,17 +81,17 @@
     "webpack-hot-client": "^4.0.3"
   },
   "scripts": {
+    "docz:watch": "docz dev",
     "build": "node ./scripts/build",
-    "serve": "NODE_ENV=production ts-node src/server/serve.ts",
-    "serve:dev": "NODE_ENV=development ts-node src/server/serve.ts",
+    "serve": "NODE_ENV=production ts-node src/core/server/serve.ts",
+    "serve:dev": "NODE_ENV=development ts-node src/core/server/serve.ts",
     "test": "node scripts/test.js --env=jsdom",
     "watch": "NODE_ENV=development npm-run-all compile:relay:* --parallel watch:*",
-    "watch:docz": "docz dev",
     "watch:client": "node ./scripts/start.js",
     "watch:css": "tcm src/client/ --watch",
     "watch:relay:stream": "nodemon --config ./config/nodemon/relay-stream.json",
     "watch:server": "nodemon --config ./config/nodemon/server.json",
-    "compile:relay:stream": "NODE_PATH=./node_modules/@coral-forks relay-compiler --src ./src/client/stream --schema src/schema.graphql --language typescript --artifactDirectory ./src/client/stream/__generated__ --no-watchman"
+    "compile:relay:stream": "NODE_PATH=./node_modules/@coral-forks relay-compiler --src ./src/core/client/stream --schema src/schema.graphql --language typescript --artifactDirectory ./src/core/client/stream/__generated__ --no-watchman"
   },
   "dependencies": {
     "chalk": "^2.4.1",

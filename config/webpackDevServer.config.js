@@ -8,7 +8,7 @@ const paths = require('./paths');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
-const serverPort = process.env.TALK_SERVER_PORT || '3000';
+const serverPort = process.env.TALK_SERVER_PORT || 3000;
 
 module.exports = function(proxy, allowedHost) {
   return {
@@ -84,7 +84,7 @@ module.exports = function(proxy, allowedHost) {
     // Proxy to the graphql server.
     proxy: proxy || {
       '/graphql': {
-        target: `http://localhost:${SERVER_PORT}`,
+        target: `http://localhost:${serverPort}`,
       }
     },
     before(app) {
