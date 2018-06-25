@@ -81,12 +81,12 @@
     "webpack-hot-client": "^4.0.3"
   },
   "scripts": {
-    "start:docz": "docz dev",
     "build": "node ./scripts/build",
     "serve": "NODE_ENV=production ts-node src/server/serve.ts",
     "serve:dev": "NODE_ENV=development ts-node src/server/serve.ts",
     "test": "node scripts/test.js --env=jsdom",
     "watch": "NODE_ENV=development npm-run-all compile:relay:* --parallel watch:*",
+    "watch:docz": "docz dev",
     "watch:client": "node ./scripts/start.js",
     "watch:css": "tcm src/client/ --watch",
     "watch:relay:stream": "nodemon --config ./config/nodemon/relay-stream.json",
