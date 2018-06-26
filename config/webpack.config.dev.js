@@ -109,6 +109,7 @@ module.exports = {
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
       // Support `tsconfig.json` `path` setting.
       new TsconfigPathsPlugin({
+        configFile: paths.appTsconfig,
         extensions: [".js", ".jsx", ".mjs", ".ts", ".tsx"],
       }),
     ],
@@ -221,6 +222,7 @@ module.exports = {
                     target: "es2015",
                     module: "esnext",
                     jsx: "preserve",
+                    noEmit: false,
                   },
                 },
               },

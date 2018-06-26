@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "es2015",
     "module": "esnext",
-    "jsx": "react",
+    "jsx": "preserve",
     "noEmit": true,
     "strictNullChecks": false,
     "lib": ["dom", "es7", "scripthost", "es2015", "esnext.asynciterable"],

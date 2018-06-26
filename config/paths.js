@@ -50,7 +50,7 @@ module.exports = {
   appPublic: resolveApp("public"),
   appPackageJson: resolveApp("package.json"),
   appSrc: resolveApp("src"),
-  appTsconfig: resolveApp("tsconfig.json"),
+  appTsconfig: resolveApp("src/core/client/tsconfig.json"),
   appLocales: resolveApp("src/locales"),
   appThemeVariables: resolveApp("src/core/client/ui/theme/variables.ts"),
   testsSetup: resolveApp("src/setupTests.js"),

@@ -37,7 +37,7 @@ export default {
         },
       ],
     });
-    config.resolve.plugins = [new TsconfigPathsPlugin({ extensions })];
+    config.resolve.plugins = [new TsconfigPathsPlugin({ extensions, configFile: paths.appTsconfig })];
     // fs.writeFileSync(path.resolve(__dirname, "tmp"), stringify(config, null, 2));
     return config;
   },
