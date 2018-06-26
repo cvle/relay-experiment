@@ -1,7 +1,6 @@
 {
   "extends": [
     "tslint:recommended",
-    "tslint-react",
     "tslint-config-prettier",
     "tslint-plugin-prettier"
   ],
@@ -10,7 +9,12 @@
     "object-literal-sort-keys": false,
     "interface-name": [true, "never-prefix"],
     "no-switch-case-fall-through": true,
-    "member-ordering": false,
-    "jsx-boolean-value": [true, "never"]
+    "member-ordering": false
+  },
+  "jsRules": {
+    "prettier": true,
+    "object-literal-sort-keys": false,
+    "no-switch-case-fall-through": true,
+    "member-ordering": false
   }
 }

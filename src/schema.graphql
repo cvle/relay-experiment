@@ -1,7 +1,7 @@
 type Comment {
   id: ID!
-  author: String
-  body: String
+  author: String!
+  body: String!
 }
 
 input PostCommentInput {
@@ -20,6 +20,6 @@ type Mutation {
 
 type Query {
   comment: Comment
-  comments: [Comment]
+  comments: [Comment!]!
 }
 

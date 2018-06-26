@@ -40,15 +40,19 @@ function commit(environment: Environment, input: PostCommentInput) {
     variables: {
       input: {
         ...input,
-        clientMutationId: clientMutationId++,
+        clientMutationId: (clientMutationId++).toString(),
       },
     },
     updater: store => {
       const payload = store.getRootField("postComment");
       if (payload) {
-        const newRecord = payload.getLinkedRecord("comment");
+        const newRecord = payload.getLinkedRecord("comment")!;
         const root = store.getRoot();
         const records = root.getLinkedRecords("comments");
+        if (!records) {
+          throw new Error("Unexpected cache state");
+        }
+
         root.setLinkedRecords([...records, newRecord], "comments");
       }
     },

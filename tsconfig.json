@@ -12,37 +12,34 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "noImplicitAny": true,
-    "lib": ["dom", "es7", "scripthost", "es2015"],
+    "strictNullChecks": true,
+    "noErrorTruncation": true,
+    "outDir": "dist",
+    "lib": ["dom", "es7", "scripthost", "es2015", "esnext.asynciterable"],
     "baseUrl": "./",
     "paths": {
-      "talk-admin/*": [
-        "./src/core/client/admin/*"
-      ],
-      "talk-stream/*": [
-        "./src/core/client/stream/*"
-      ],
-      "talk-framework/*": [
-        "./src/core/client/framework/*"
-      ],
-      "talk-ui/*": [
-        "./src/core/client/ui/*"
-      ],
       "talk-server/*": [
         "./src/core/server/*"
-      ],
-      "talk-locales/*": [
-        "./src/locales/*"
-      ],
-      "*": [
-        "./node_modules/@coral-forks/*"
       ]
     }
   },
   "include": [
+    "./scripts/**/*.ts",
+    "./scripts/**/*.js",
+    "./configs/**/*.js",
+    "./configs/**/*.ts",
+    "./src/**/*.js",
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./src/**/*.d.ts",
+    "./test/**/*.js",
     "./test/**/*.ts",
     "./test/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules/subscriptions-transport-ws",
+    "./src/core/client",
+    "./src/types/**/*.ts",
+    "./src/types/**/*.tsx"
   ]
 }

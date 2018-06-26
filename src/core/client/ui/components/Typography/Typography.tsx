@@ -33,7 +33,7 @@ interface InnerProps extends HTMLAttributes<any> {
   /**
    * Override or extend the styles applied to the component.
    */
-  classes: Partial<typeof styles>;
+  classes: typeof styles;
   /**
    * Convenient prop to override the root styling.
    */
@@ -95,7 +95,7 @@ const Typography: StatelessComponent<InnerProps> = props => {
 
   const rootClassName = cn(
     classes.root,
-    classes[variant],
+    classes[variant!],
     {
       [classes.colorPrimary]: color === "primary",
       [classes.colorSecondary]: color === "secondary",
@@ -111,7 +111,7 @@ const Typography: StatelessComponent<InnerProps> = props => {
   );
 
   const Component =
-    component || (paragraph ? "p" : headlineMapping[variant]) || "span";
+    component || (paragraph ? "p" : headlineMapping![variant!]) || "span";
 
   return <Component className={rootClassName} {...rest} />;
 };

@@ -1,10 +1,10 @@
-'use strict';
+"use strict";
 
 // A script from `create-react-app` ejected `25.06.2018`.
 
-const path = require('path');
-const fs = require('fs');
-const url = require('url');
+const path = require("path");
+const fs = require("fs");
+const url = require("url");
 
 // Make sure any symlinks in the project folder are resolved:
 // https://github.com/facebookincubator/create-react-app/issues/637
@@ -13,14 +13,14 @@ const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 const envPublicUrl = process.env.PUBLIC_URL;
 
-function ensureSlash(path, needsSlash) {
-  const hasSlash = path.endsWith('/');
+function ensureSlash(p, needsSlash) {
+  const hasSlash = p.endsWith("/");
   if (hasSlash && !needsSlash) {
-    return path.substr(path, path.length - 1);
+    return p.substr(p, p.length - 1);
   } else if (!hasSlash && needsSlash) {
-    return `${path}/`;
+    return `${p}/`;
   } else {
-    return path;
+    return p;
   }
 }
 
@@ -36,30 +36,30 @@ const getPublicUrl = appPackageJson =>
 function getServedPath(appPackageJson) {
   const publicUrl = getPublicUrl(appPackageJson);
   const servedUrl =
-    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : '/');
+    envPublicUrl || (publicUrl ? url.parse(publicUrl).pathname : "/");
   return ensureSlash(servedUrl, true);
 }
 
 // config after eject: we're in ./config/
 module.exports = {
-  dotenv: resolveApp('.env'),
-  appPostCssConfig: resolveApp('config/postcss.config.js'),
-  appJestConfig: resolveApp('config/jest.config.js'),
-  appLoaders: resolveApp('loaders'),
-  appDist: resolveApp('dist'),
-  appPublic: resolveApp('public'),
-  appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
-  appTsconfig: resolveApp('tsconfig.json'),
-  appLocales: resolveApp('src/locales'),
-  appThemeVariables: resolveApp('src/core/client/ui/theme/variables.ts'),
-  testsSetup: resolveApp('src/setupTests.js'),
-  appNodeModules: resolveApp('node_modules'),
+  dotenv: resolveApp(".env"),
+  appPostCssConfig: resolveApp("config/postcss.config.js"),
+  appJestConfig: resolveApp("config/jest.config.js"),
+  appLoaders: resolveApp("loaders"),
+  appDist: resolveApp("dist"),
+  appPublic: resolveApp("public"),
+  appPackageJson: resolveApp("package.json"),
+  appSrc: resolveApp("src"),
+  appTsconfig: resolveApp("tsconfig.json"),
+  appLocales: resolveApp("src/locales"),
+  appThemeVariables: resolveApp("src/core/client/ui/theme/variables.ts"),
+  testsSetup: resolveApp("src/setupTests.js"),
+  appNodeModules: resolveApp("node_modules"),
 
-  publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json')),
+  publicUrl: getPublicUrl(resolveApp("package.json")),
+  servedPath: getServedPath(resolveApp("package.json")),
 
-  appStreamHtml: resolveApp('src/core/client/stream/index.html'),
-  appStreamLocalesTemplate: resolveApp('src/core/client/stream/locales.ts'),
-  appStreamIndex: resolveApp('src/core/client/stream/index.tsx'),
+  appStreamHtml: resolveApp("src/core/client/stream/index.html"),
+  appStreamLocalesTemplate: resolveApp("src/core/client/stream/locales.ts"),
+  appStreamIndex: resolveApp("src/core/client/stream/index.tsx"),
 };

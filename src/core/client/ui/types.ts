@@ -8,7 +8,7 @@ import React from "react";
  * E.g. Diff<"a" | "b", "a"> = "b"
  */
 export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } &
-  { [P in U]: never } & { [x: string]: never })[T];
+  { [P in U]: never } & { [x: string]: never; [x: number]: never })[T];
 
 /**
  * Overwrite properties of `T`.

@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { VALIDATION_REQUIRED } from "./messages";
 
-type Validator<T, V> = (v: T, values?: V) => ReactNode;
+type Validator<T, V> = (v: T, values: V) => ReactNode;
 
 /**
  * createValidator returns a Validator that returns given `error` when `condition` is falsey.

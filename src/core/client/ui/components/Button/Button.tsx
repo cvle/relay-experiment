@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { pick } from "lodash";
-import * as React from "react";
+import React from "react";
 
 import { withStyles } from "talk-ui/hocs";
 import { ReturnPropTypes } from "talk-ui/types";
@@ -13,7 +13,7 @@ interface InnerProps extends BaseButtonProps {
    * This prop can be used to add custom classnames.
    * It is handled by the `withStyles `HOC.
    */
-  classes: Partial<typeof styles> & BaseButtonProps["classes"];
+  classes: typeof styles & Partial<BaseButtonProps["classes"]>;
 
   /** If set renders a full width button */
   fullWidth?: boolean;

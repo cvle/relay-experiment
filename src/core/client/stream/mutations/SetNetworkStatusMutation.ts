@@ -12,7 +12,7 @@ export type SetNetworkStatusMutation = (input: SetNetworkStatusInput) => void;
 
 async function commit(environment: Environment, input: SetNetworkStatusInput) {
   return commitLocalUpdate(environment, store => {
-    const record = store.get(NETWORK_ID);
+    const record = store.get(NETWORK_ID)!;
     record.setValue(input.isOffline, "isOffline");
   });
 }

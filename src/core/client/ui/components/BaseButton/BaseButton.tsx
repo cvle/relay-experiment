@@ -8,8 +8,6 @@ import { ReturnPropTypes } from "talk-ui/types";
 import * as styles from "./BaseButton.css";
 
 interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  className?: string;
-
   /** If set renders an anchor tag instead */
   anchor?: boolean;
 
@@ -17,7 +15,7 @@ interface InnerProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    * This prop can be used to add custom classnames.
    * It is handled by the `withStyles `HOC.
    */
-  classes: Partial<typeof styles>;
+  classes: typeof styles;
 
   /** This is passed by the `withKeyboardFocus` HOC */
   keyboardFocus: boolean;
