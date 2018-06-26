@@ -6,10 +6,6 @@ name: Workarounds
 
 A place to write down temporary workarounds.
 
-##### Patched Packages
-
-We sometimes use patched versions or do our own patches on exising packages and publish them to npm on `@coral-forks/*`. The way we are wiring the packages is by utilizing the `paths` option in `tsconfig.json` when using typescript and webpack. For other use cases we set `NODE_PATH` to `./node_modules/@coral-forks`. This is a fast way to help unblock us from pending PRs.
-
 ## Babel
 
 Babel versions are currently locked to 7.0.0-beta.49 because of this bug:
@@ -18,13 +14,13 @@ https://github.com/babel/babel/issues/8167#issuecomment-397295483
 
 ## Relay Typescript
 
-We are using a patched version of `Relay` that adds support for `Typescript`. Big thanks to [@alloy](https://github.com/alloy) for his fork on https://github.com/alloy/relay. The patched packages are published to `@coral-forks/*`.
+We are using a patched version of `Relay` that adds support for `Typescript`. Big thanks to [@alloy](https://github.com/alloy) for his fork on https://github.com/alloy/relay. Patched packages can be found in the top level `patches` folder.
 
 This is no longer needed once https://github.com/facebook/relay/pull/2293 has been merged and released.
 
 ## relay-compiler-language-typescript
 
-We have patched [relay-compiler-language-typescript](https://github.com/relay-tools/relay-compiler-language-typescript)  with an hack to fix an issue with `--noImplicitAny` support (https://github.com/relay-tools/relay-compiler-language-typescript/issues/48). We released the package in `@coral-forks/relay-compiler-language-typescript`.
+We have patched [relay-compiler-language-typescript](https://github.com/relay-tools/relay-compiler-language-typescript)  with an hack to fix an issue with `--noImplicitAny` support (https://github.com/relay-tools/relay-compiler-language-typescript/issues/48). Patched packages can be found in the top level `patches` folder.
 
 ## Relay Client Side Schema Extensions
 

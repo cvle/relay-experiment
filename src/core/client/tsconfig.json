@@ -23,9 +23,6 @@
       ],
       "talk-locales/*": [
         "../../locales/*"
-      ],
-      "*": [
-        "../../../node_modules/@coral-forks/*"
       ]
     }
   },
