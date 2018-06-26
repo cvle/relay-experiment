@@ -29,6 +29,4 @@ export type Overwrite<T, U> = Pick<T, Diff<keyof T, keyof U>> & U;
  *
  * E.g. type ButtonProps = ReturnPropTypes<Button>;
  */
-export type ReturnPropTypes<T> = T extends React.ComponentType<infer R>
-  ? R
-  : {};
+export type PropTypesOf<T> = T extends React.ComponentType<infer R> ? R : {};

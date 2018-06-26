@@ -3,7 +3,7 @@ import { pick } from "lodash";
 import React from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { ReturnPropTypes } from "talk-ui/types";
+import { PropTypesOf } from "talk-ui/types";
 
 import BaseButton, { BaseButtonProps } from "../BaseButton";
 import * as styles from "./Button.css";
@@ -58,5 +58,5 @@ class Button extends React.Component<InnerProps> {
 }
 
 const enhanced = withStyles(styles)(Button);
-export type ButtonProps = ReturnPropTypes<typeof enhanced>;
+export type ButtonProps = PropTypesOf<typeof enhanced>;
 export default enhanced;

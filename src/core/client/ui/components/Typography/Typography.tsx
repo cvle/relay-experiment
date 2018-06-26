@@ -3,7 +3,7 @@ import React from "react";
 import { HTMLAttributes, ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { ReturnPropTypes } from "talk-ui/types";
+import { PropTypesOf } from "talk-ui/types";
 
 import * as styles from "./Typography.css";
 
@@ -136,5 +136,5 @@ Typography.defaultProps = {
 };
 
 const enhanced = withStyles(styles)(Typography);
-export type CenterProps = ReturnPropTypes<typeof enhanced>;
+export type CenterProps = PropTypesOf<typeof enhanced>;
 export default enhanced;

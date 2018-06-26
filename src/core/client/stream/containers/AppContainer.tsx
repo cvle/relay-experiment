@@ -5,7 +5,7 @@ import {
   withFragmentContainer,
   withLocalStateContainer,
 } from "talk-framework/lib/relay";
-import { ReturnPropTypes } from "talk-framework/types";
+import { PropTypesOf } from "talk-framework/types";
 import { AppContainer as Data } from "talk-stream/__generated__/AppContainer.graphql";
 import { AppContainerLocal as Local } from "talk-stream/__generated__/AppContainerLocal.graphql";
 
@@ -41,5 +41,5 @@ const enhanced = withLocalStateContainer<Local>(
   )(AppContainer)
 );
 
-export type AppContainerProps = ReturnPropTypes<typeof enhanced>;
+export type AppContainerProps = PropTypesOf<typeof enhanced>;
 export default enhanced;

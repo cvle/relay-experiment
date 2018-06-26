@@ -3,7 +3,7 @@ import * as React from "react";
 import { ReactNode, StatelessComponent } from "react";
 
 import { withStyles } from "talk-ui/hocs";
-import { ReturnPropTypes } from "talk-ui/types";
+import { PropTypesOf } from "talk-ui/types";
 
 import * as styles from "./Center.css";
 
@@ -26,5 +26,5 @@ const Center: StatelessComponent<InnerProps> = props => {
 };
 
 const enhanced = withStyles(styles)(Center);
-export type CenterProps = ReturnPropTypes<typeof enhanced>;
+export type CenterProps = PropTypesOf<typeof enhanced>;
 export default enhanced;

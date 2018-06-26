@@ -2,7 +2,7 @@ import React, { StatelessComponent } from "react";
 import { graphql } from "react-relay";
 
 import withFragmentContainer from "talk-framework/lib/relay/withFragmentContainer";
-import { Omit, ReturnPropTypes } from "talk-framework/types";
+import { Omit, PropTypesOf } from "talk-framework/types";
 import { CommentContainer as Data } from "talk-stream/__generated__/CommentContainer.graphql";
 
 import Comment, { CommentProps } from "../components/Comment";
@@ -23,5 +23,5 @@ const enhanced = withFragmentContainer<{ data: Data }>(
   `
 )(CommentContainer);
 
-export type CommentContainerProps = ReturnPropTypes<typeof enhanced>;
+export type CommentContainerProps = PropTypesOf<typeof enhanced>;
 export default enhanced;

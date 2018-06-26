@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import { BadUserInputError } from "talk-framework/lib/errors";
-import { ReturnPropTypes } from "talk-framework/types";
+import { PropTypesOf } from "talk-framework/types";
 
 import PostCommentForm, {
   PostCommentFormProps,
@@ -30,5 +30,5 @@ class PostCommentFormContainer extends Component<InnerProps> {
 }
 
 const enhanced = withPostCommentMutation(PostCommentFormContainer);
-export type PostCommentFormContainerProps = ReturnPropTypes<typeof enhanced>;
+export type PostCommentFormContainerProps = PropTypesOf<typeof enhanced>;
 export default enhanced;
